@@ -4,6 +4,7 @@ import {
     Text,
     FrameHexagon,
     Blockquote,
+    Button,
 } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { BleepsProvider } from "@arwes/sounds";
@@ -12,6 +13,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "~/utils/supabaseClient";
 import wallpaper from "~/images/wallpaper.jpeg";
 import { Session } from "@supabase/supabase-js";
+import { useNavigate } from "remix";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -26,6 +28,7 @@ const animatorGeneral = {
 
 export default function Index() {
     const [session, setSession] = useState<Session | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setSession(supabase.auth.session() as any);
@@ -40,7 +43,6 @@ export default function Index() {
                 fontFamily: "system-ui, sans-serif",
                 lineHeight: "1.4",
                 margin: "20px",
-                textAlign: "center",
             }}
         >
             <ArwesThemeProvider>
@@ -90,7 +92,7 @@ export default function Index() {
                                     <Text
                                         animator={{
                                             duration: {
-                                                enter: 1000,
+                                                enter: 10000,
                                                 exit: 1000,
                                             },
                                             activate: true,
@@ -120,6 +122,13 @@ export default function Index() {
                                         phénomène.
                                     </Text>
                                 </FrameHexagon>
+
+                                <Button
+                                    onClick={() => navigate("/members")}
+                                    animator={{ activate: true }}
+                                >
+                                    <Text>Liste des mercenaires</Text>
+                                </Button>
 
                                 <img
                                     style={{
