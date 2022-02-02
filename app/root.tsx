@@ -10,7 +10,7 @@ import {
 import type { MetaFunction } from "remix";
 
 export const meta: MetaFunction = () => {
-    return { title: "RÉCOMPENSE" };
+    return { title: "Portail intergalactique" };
 };
 
 export default function App() {

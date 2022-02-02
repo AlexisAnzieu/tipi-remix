@@ -1,4 +1,3 @@
-import { Link } from "remix";
 import {
     ArwesThemeProvider,
     StylesBaseline,
@@ -8,11 +7,15 @@ import {
 } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { BleepsProvider } from "@arwes/sounds";
+import Auth from "./auth";
+import { useState, useEffect } from "react";
+import { supabase } from "~/utils/supabaseClient";
+import wallpaper from "~/images/wallpaper.jpeg";
+import { Session } from "@supabase/supabase-js";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
 const SOUND_READOUT_URL = "/assets/sounds/readout.mp3";
-const IMAGE_URL = "/images/wallpaper.jpeg";
 
 const audioSettings = { common: { volume: 0.25 } };
 const playersSettings = { readout: { src: [SOUND_READOUT_URL], loop: true } };
@@ -22,10 +25,24 @@ const animatorGeneral = {
 };
 
 export default function Index() {
-    return (
-        <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-            <Link to="/posts">Posts</Link>
+    const [session, setSession] = useState<Session | null>(null);
 
+    useEffect(() => {
+        setSession(supabase.auth.session() as any);
+        supabase.auth.onAuthStateChange((_event, s: Session | null) => {
+            setSession(s);
+        });
+    }, []);
+
+    return (
+        <div
+            style={{
+                fontFamily: "system-ui, sans-serif",
+                lineHeight: "1.4",
+                margin: "20px",
+                textAlign: "center",
+            }}
+        >
             <ArwesThemeProvider>
                 <BleepsProvider
                     audioSettings={audioSettings}
@@ -39,9 +56,11 @@ export default function Index() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        <div style={{ margin: "20px" }}>
-                            <h1>RÉCOMPENSE INTERGALACTIQUE</h1>
+                        <h1>PORTAIL INTERGALACTIQUE</h1>
 
+                        {!session && <Auth />}
+
+                        {session && (
                             <>
                                 <Text
                                     animator={{
@@ -53,10 +72,21 @@ export default function Index() {
                                     }}
                                 >
                                     <Blockquote palette={"error"}>
-                                        <Text>{`À l'attention de coucou`}</Text>
+                                        <Text>
+                                            {`À l'attention de ${session.user?.user_metadata.name}`}
+                                        </Text>
                                     </Blockquote>
                                 </Text>
-                                <FrameHexagon>
+                                <FrameHexagon
+                                    animator={{
+                                        duration: {
+                                            enter: 1000,
+                                            exit: 1000,
+                                        },
+                                        activate: true,
+                                    }}
+                                    hover
+                                >
                                     <Text
                                         animator={{
                                             duration: {
@@ -71,22 +101,22 @@ export default function Index() {
                                         }}
                                     >
                                         En 1950, la comète Normand1LX32 s’est
-                                        écrasée sur en Lanaudière, sectionnant
-                                        une montagne en deux. Le lieu de
-                                        l’impact devient mystérieusement un lieu
-                                        de passage d’animaux et attire toutes
-                                        sortes d’hurluberlus. Depuis lors, de
-                                        nombreux scientifiques ont tenté de
-                                        résoudre l’énigme de cette montagne
-                                        coupée, en vain. 200 ans plus tard une
-                                        escouade de quatre érudits
-                                        professionnels est envoyée sur place
-                                        mais toute communication est perdue avec
-                                        eux, cependant des fréquences de 50hz à
+                                        écrasée en Lanaudière, sectionnant une
+                                        montagne en deux. Le lieu de l’impact
+                                        devient mystérieusement un lieu de
+                                        passage et d'étranges apparitions ont
+                                        lieu. Depuis lors, de nombreux
+                                        scientifiques ont tenté de résoudre
+                                        l’énigme de cette montagne coupée, en
+                                        vain. 200 ans plus tard, une escouade de
+                                        quatre érudits professionnels est
+                                        envoyée sur place mais toute
+                                        communication est perdue avec eux.
+                                        Cependant, des fréquences de 50hz à
                                         20kHz se font entendre dans toute la
-                                        vallée...Une prime de 2 millions de
-                                        tipiz (tpz) est offerte a celle ou celui
-                                        qui lèvera le voile sur cette étrange
+                                        vallée... Une prime de 2 millions de
+                                        tipiz (tpz) est offerte à ceux qui
+                                        lèveront le voile sur cette étrange
                                         phénomène.
                                     </Text>
                                 </FrameHexagon>
@@ -95,11 +125,11 @@ export default function Index() {
                                     style={{
                                         paddingTop: "50px",
                                     }}
-                                    src={IMAGE_URL}
+                                    src={wallpaper}
                                     alt="A nebula"
                                 />
                             </>
-                        </div>
+                        )}
                     </AnimatorGeneralProvider>
                 </BleepsProvider>
             </ArwesThemeProvider>
