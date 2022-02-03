@@ -122,8 +122,10 @@ export default function Index() {
                                         phénomène.
                                     </Text>
                                 </FrameHexagon>
-
+                                <br />
+                                <br />
                                 <Button
+                                    FrameComponent={FrameHexagon}
                                     onClick={() => navigate("/members")}
                                     animator={{ activate: true }}
                                 >
