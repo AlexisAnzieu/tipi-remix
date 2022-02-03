@@ -1,6 +1,11 @@
 import { useLoaderData } from "remix";
 import { Client } from "@notionhq/client";
 import { ArwesThemeProvider, StylesBaseline, Table } from "@arwes/core";
+import { useEffect, useState } from "react";
+import { supabase } from "~/utils/supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import Auth from "./auth";
+
 const notion = new Client({
     auth: "secret_LBsUIf4CYt9PNHqif7YzXa1QU3ECvgcI4WyirWAdX7t",
 });
@@ -25,6 +30,15 @@ export const loader = async () => {
 };
 
 export default function Members() {
+    const [session, setSession] = useState<Session | null>(null);
+
+    useEffect(() => {
+        setSession(supabase.auth.session() as any);
+        supabase.auth.onAuthStateChange((_event, s: Session | null) => {
+            setSession(s);
+        });
+    }, []);
+
     const data = useLoaderData();
     const cleanData = data.map((e: any) => ({
         team: e.properties.Team.select.name,
@@ -61,27 +75,33 @@ export default function Members() {
     return (
         <ArwesThemeProvider>
             <StylesBaseline />
-            <h1>Par équipes</h1>
-            <Table
-                animator={{ animate: false }}
-                headers={[
-                    { id: "e", data: "Équipe" },
-                    { id: "d", data: "Score" },
-                ]}
-                dataset={datasetTeams}
-                columnWidths={["50%", "50%"]}
-            />
-            <h1>Par mercenaires</h1>
-            <Table
-                animator={{ animate: false }}
-                headers={[
-                    { id: "a", data: "Nom" },
-                    { id: "c", data: "Équipe" },
-                    { id: "b", data: "Score" },
-                ]}
-                dataset={datasetMercenaires}
-                columnWidths={["40%", "40%", "20%"]}
-            />
+            {!session && <Auth />}
+
+            {session && (
+                <>
+                    <h1>Par équipes</h1>
+                    <Table
+                        animator={{ animate: false }}
+                        headers={[
+                            { id: "e", data: "Équipe" },
+                            { id: "d", data: "Score" },
+                        ]}
+                        dataset={datasetTeams}
+                        columnWidths={["50%", "50%"]}
+                    />
+                    <h1>Par mercenaires</h1>
+                    <Table
+                        animator={{ animate: false }}
+                        headers={[
+                            { id: "a", data: "Nom" },
+                            { id: "c", data: "Équipe" },
+                            { id: "b", data: "Score" },
+                        ]}
+                        dataset={datasetMercenaires}
+                        columnWidths={["40%", "40%", "20%"]}
+                    />
+                </>
+            )}
         </ArwesThemeProvider>
     );
 }

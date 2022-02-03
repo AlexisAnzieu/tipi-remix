@@ -1,5 +1,4 @@
 import {
-    Link,
     Links,
     LiveReload,
     Meta,
@@ -8,10 +7,20 @@ import {
     ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import styles from "~/style.css";
 
 export const meta: MetaFunction = () => {
     return { title: "Portail intergalactique" };
 };
+
+export function links() {
+    return [
+        {
+            rel: "stylesheet",
+            href: styles,
+        },
+    ];
+}
 
 export default function App() {
     return (
