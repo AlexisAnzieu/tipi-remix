@@ -65,7 +65,7 @@ export default function Index() {
                                     activate: true,
                                 }}
                             >
-                                <Blockquote palette={"error"}>
+                                <Blockquote>
                                     <Text>
                                         {`À l'attention de ${session.user?.user_metadata.name}`}
                                     </Text>
