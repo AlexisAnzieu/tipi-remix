@@ -52,7 +52,6 @@ export default function Members() {
     );
 
     const datasetMercenaires = data.map((e: any, index: any) => {
-        console.log(e.properties);
         return {
             id: index,
             columns: [
