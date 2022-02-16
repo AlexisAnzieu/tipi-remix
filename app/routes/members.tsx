@@ -1,10 +1,6 @@
 import { useLoaderData } from "remix";
 import { Client } from "@notionhq/client";
 import { ArwesThemeProvider, StylesBaseline, Table } from "@arwes/core";
-import { useEffect, useState } from "react";
-import { supabase } from "~/utils/supabaseClient";
-import { Session } from "@supabase/supabase-js";
-import Auth from "./auth";
 
 const notion = new Client({
     auth: "secret_LBsUIf4CYt9PNHqif7YzXa1QU3ECvgcI4WyirWAdX7t",
@@ -21,7 +17,7 @@ export const loader = async () => {
                 direction: "descending",
             },
             {
-                property: "Nom",
+                property: "firstName",
                 direction: "ascending",
             },
         ],
@@ -30,15 +26,6 @@ export const loader = async () => {
 };
 
 export default function Members() {
-    const [session, setSession] = useState<Session | null>(null);
-
-    useEffect(() => {
-        setSession(supabase.auth.session() as any);
-        supabase.auth.onAuthStateChange((_event, s: Session | null) => {
-            setSession(s);
-        });
-    }, []);
-
     const data = useLoaderData();
     const cleanData = data.map((e: any) => ({
         team: e.properties.Team.select.name,
@@ -64,44 +51,49 @@ export default function Members() {
         })
     );
 
-    const datasetMercenaires = data.map((e: any, index: any) => ({
-        id: index,
-        columns: [
-            { id: "i", data: e.properties.Nom.title[0].plain_text },
-            { id: "j", data: e.properties.Team.select.name },
-            { id: "k", data: e.properties.Score.number },
-        ],
-    }));
+    const datasetMercenaires = data.map((e: any, index: any) => {
+        console.log(e.properties);
+        return {
+            id: index,
+            columns: [
+                {
+                    id: "i",
+                    data: `${e.properties.firstName.title[0].plain_text} ${
+                        e.properties.lastName.rich_text[0]?.plain_text || ""
+                    }`,
+                },
+                { id: "j", data: e.properties.Team.select.name },
+                { id: "k", data: e.properties.Score.number },
+            ],
+        };
+    });
+
     return (
         <ArwesThemeProvider>
             <StylesBaseline />
-            {!session && <Auth />}
-
-            {session && (
-                <>
-                    <h1>Par équipes</h1>
-                    <Table
-                        animator={{ animate: false }}
-                        headers={[
-                            { id: "e", data: "Équipe" },
-                            { id: "d", data: "Score" },
-                        ]}
-                        dataset={datasetTeams}
-                        columnWidths={["50%", "50%"]}
-                    />
-                    <h1>Par mercenaires</h1>
-                    <Table
-                        animator={{ animate: false }}
-                        headers={[
-                            { id: "a", data: "Nom" },
-                            { id: "c", data: "Équipe" },
-                            { id: "b", data: "Score" },
-                        ]}
-                        dataset={datasetMercenaires}
-                        columnWidths={["40%", "40%", "20%"]}
-                    />
-                </>
-            )}
+            <>
+                <h1>Par équipes</h1>
+                <Table
+                    animator={{ animate: false }}
+                    headers={[
+                        { id: "e", data: "Équipe" },
+                        { id: "d", data: "Score" },
+                    ]}
+                    dataset={datasetTeams}
+                    columnWidths={["50%", "50%"]}
+                />
+                <h1>Par mercenaires</h1>
+                <Table
+                    animator={{ animate: false }}
+                    headers={[
+                        { id: "a", data: "Nom" },
+                        { id: "c", data: "Équipe" },
+                        { id: "b", data: "Score" },
+                    ]}
+                    dataset={datasetMercenaires}
+                    columnWidths={["40%", "40%", "20%"]}
+                />
+            </>
         </ArwesThemeProvider>
     );
 }
