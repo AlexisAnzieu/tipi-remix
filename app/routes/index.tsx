@@ -13,7 +13,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "~/utils/supabaseClient";
 import wallpaper from "~/images/wallpaper.jpeg";
 import { Session } from "@supabase/supabase-js";
-import { useNavigate } from "remix";
+import { useLoaderData, useNavigate } from "remix";
+import getMembers from "./api/getMembers";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -26,14 +27,50 @@ const animatorGeneral = {
     duration: { enter: 200, exit: 200, stagger: 30 },
 };
 
+const setUserPermissionType = (
+    session: Session | null,
+    members: { name: string; hasPaid: boolean }[]
+): "NONE" | "INVALID_MEMBER" | "MEMBER_NO_PAID" | "MEMBER_PAID" => {
+    if (!session) {
+        return "NONE";
+    }
+    const fullName = session.user?.user_metadata.full_name;
+    const found = members.find((element) => element.name === fullName);
+    if (!found) {
+        return "INVALID_MEMBER";
+    }
+    if (!found.hasPaid) {
+        return "MEMBER_NO_PAID";
+    }
+    return "MEMBER_PAID";
+};
+
+const extractMembers = (table: any) => {
+    return table.map((row: any) => ({
+        name: `${row.properties.firstName.title[0].plain_text} ${
+            row.properties.lastName.rich_text[0]?.plain_text || ""
+        }`,
+        hasPaid: row.properties.hasPaid.checkbox,
+    }));
+};
+
+export const loader = async () => {
+    return getMembers();
+};
+
 export default function Index() {
     const [session, setSession] = useState<Session | null>(null);
     const navigate = useNavigate();
+    const membersTable = useLoaderData();
+    const extractedMembers = extractMembers(membersTable);
+    console.log(extractedMembers);
+    let userPermissionType = setUserPermissionType(session, extractedMembers);
 
     useEffect(() => {
         setSession(supabase.auth.session() as any);
         supabase.auth.onAuthStateChange((_event, s: Session | null) => {
             setSession(s);
+            userPermissionType = setUserPermissionType(session, membersTable);
         });
     }, []);
 
@@ -46,16 +83,39 @@ export default function Index() {
             >
                 <StylesBaseline
                     styles={{
-                        "html, body": { fontFamily: FONT_FAMILY_ROOT },
+                        "html, body": {
+                            fontFamily: FONT_FAMILY_ROOT,
+                            padding: "20px",
+                        },
                         "code, pre": { fontFamily: FONT_FAMILY_CODE },
                     }}
                 />
                 <AnimatorGeneralProvider animator={animatorGeneral}>
                     <h1>PORTAIL INTERGALACTIQUE</h1>
 
-                    {!session && <Auth />}
+                    {userPermissionType === "NONE" && <Auth />}
 
-                    {session && (
+                    {userPermissionType === "INVALID_MEMBER" && (
+                        <Blockquote palette="error">
+                            <Text>
+                                {`${session?.user?.user_metadata.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gène occasionnée.`}
+                            </Text>
+                        </Blockquote>
+                    )}
+
+                    {userPermissionType === "MEMBER_NO_PAID" && (
+                        <Blockquote palette="secondary">
+                            <Text>
+                                {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquitté.`}
+                                <br /> <br />
+                                Pour ce faire, veuillez envoyer 80$ à l'adresse
+                                interrac suivante: alexis.anzieu@gmail.com en
+                                indiquant votre nom.
+                            </Text>
+                        </Blockquote>
+                    )}
+
+                    {userPermissionType === "MEMBER_PAID" && (
                         <>
                             <Text
                                 animator={{
@@ -67,7 +127,7 @@ export default function Index() {
                             >
                                 <Blockquote>
                                     <Text>
-                                        {`À l'attention de ${session.user?.user_metadata.name}`}
+                                        {`À l'attention de ${session?.user?.user_metadata.name}`}
                                     </Text>
                                 </Blockquote>
                             </Text>
