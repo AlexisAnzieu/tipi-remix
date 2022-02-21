@@ -15,6 +15,7 @@ import wallpaper from "~/images/wallpaper.jpeg";
 import { Session } from "@supabase/supabase-js";
 import { useLoaderData, useNavigate } from "remix";
 import getMembers from "./api/getMembers";
+import { setUserPermissionType } from "~/utils/auth";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -25,24 +26,6 @@ const playersSettings = { readout: { src: [SOUND_READOUT_URL], loop: true } };
 const bleepsSettings = { readout: { player: "readout" } };
 const animatorGeneral = {
     duration: { enter: 200, exit: 200, stagger: 30 },
-};
-
-const setUserPermissionType = (
-    session: Session | null,
-    members: { name: string; hasPaid: boolean }[]
-): "NONE" | "INVALID_MEMBER" | "MEMBER_NO_PAID" | "MEMBER_PAID" => {
-    if (!session) {
-        return "NONE";
-    }
-    const fullName = session.user?.user_metadata.full_name;
-    const found = members.find((element) => element.name === fullName);
-    if (!found) {
-        return "INVALID_MEMBER";
-    }
-    if (!found.hasPaid) {
-        return "MEMBER_NO_PAID";
-    }
-    return "MEMBER_PAID";
 };
 
 const extractMembers = (table: any) => {
@@ -63,7 +46,6 @@ export default function Index() {
     const navigate = useNavigate();
     const membersTable = useLoaderData();
     const extractedMembers = extractMembers(membersTable);
-    console.log(extractedMembers);
     let userPermissionType = setUserPermissionType(session, extractedMembers);
 
     useEffect(() => {
