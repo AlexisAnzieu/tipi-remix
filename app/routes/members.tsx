@@ -1,20 +1,8 @@
-import { Link, useNavigate, useOutletContext } from "remix";
+import { Link, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
-import { supabase } from "~/utils/supabaseClient";
-import { useEffect } from "react";
-import { setUserPermissionType } from "~/utils/auth";
 
 export default function Members() {
-    let navigate = useNavigate();
-    const session = supabase.auth.session() as any;
     const { members } = useOutletContext<any>();
-    let userPermissionType = setUserPermissionType(session, members);
-
-    useEffect(() => {
-        if (userPermissionType !== "MEMBER_PAID") {
-            navigate("/");
-        }
-    }, []);
 
     const cleanData = members.map((e: any) => ({
         team: e.properties.Team.select.name,
@@ -58,36 +46,32 @@ export default function Members() {
 
     return (
         <>
-            {userPermissionType === "MEMBER_PAID" && (
-                <>
-                    <Link to="/">
-                        <Button palette="primary">Retour au portail</Button>
-                    </Link>
-                    <br />
-                    <br />
-                    <h1>Par équipes</h1>
-                    <Table
-                        animator={{ animate: false }}
-                        headers={[
-                            { id: "e", data: "Équipe" },
-                            { id: "d", data: "Score" },
-                        ]}
-                        dataset={datasetTeams}
-                        columnWidths={["50%", "50%"]}
-                    />
-                    <h1>Par mercenaires</h1>
-                    <Table
-                        animator={{ animate: false }}
-                        headers={[
-                            { id: "a", data: "Nom" },
-                            { id: "c", data: "Équipe" },
-                            { id: "b", data: "Score" },
-                        ]}
-                        dataset={datasetMercenaires}
-                        columnWidths={["40%", "40%", "20%"]}
-                    />
-                </>
-            )}
+            <Link to="/">
+                <Button palette="primary">Retour au portail</Button>
+            </Link>
+            <br />
+            <br />
+            <h1>Par équipes</h1>
+            <Table
+                animator={{ animate: false }}
+                headers={[
+                    { id: "e", data: "Équipe" },
+                    { id: "d", data: "Score" },
+                ]}
+                dataset={datasetTeams}
+                columnWidths={["50%", "50%"]}
+            />
+            <h1>Par mercenaires</h1>
+            <Table
+                animator={{ animate: false }}
+                headers={[
+                    { id: "a", data: "Nom" },
+                    { id: "c", data: "Équipe" },
+                    { id: "b", data: "Score" },
+                ]}
+                dataset={datasetMercenaires}
+                columnWidths={["40%", "40%", "20%"]}
+            />
         </>
     );
 }

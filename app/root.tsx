@@ -9,9 +9,13 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/style.css";
-import { ArwesThemeProvider, StylesBaseline } from "@arwes/core";
+import { ArwesThemeProvider, Blockquote, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
-import { getMembers } from "./utils/auth";
+import { getMembers, setUserPermissionType } from "./utils/auth";
+import { useState, useEffect } from "react";
+import { supabase } from "./utils/supabaseClient";
+import { Session } from "@supabase/supabase-js";
+import Auth from "./routes/auth";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -39,7 +43,18 @@ export const loader = async () => {
 };
 
 export default function App() {
+    const [session, setSession] = useState<Session | null>(null);
     const { members } = useLoaderData();
+    let userPermissionType = setUserPermissionType(session, members);
+
+    useEffect(() => {
+        setSession(supabase.auth.session() as any);
+        supabase.auth.onAuthStateChange((_event, s: Session | null) => {
+            setSession(s);
+            userPermissionType = setUserPermissionType(session, members);
+        });
+    }, []);
+
     return (
         <html lang="en">
             <head>
@@ -52,7 +67,6 @@ export default function App() {
                 <Links />
             </head>
             <body>
-                {" "}
                 <ArwesThemeProvider>
                     <StylesBaseline
                         styles={{
@@ -64,7 +78,29 @@ export default function App() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        <Outlet context={{ members }} />
+                        {userPermissionType === "NONE" && <Auth />}
+
+                        {userPermissionType === "INVALID_MEMBER" && (
+                            <>
+                                <Blockquote palette="error">
+                                    {`${session?.user?.user_metadata.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gène occasionnée.`}
+                                </Blockquote>
+                            </>
+                        )}
+
+                        {userPermissionType === "MEMBER_NO_PAID" && (
+                            <Blockquote palette="secondary">
+                                {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquitté.`}
+                                <br /> <br />
+                                Pour ce faire, veuillez envoyer 80$ à l'adresse
+                                interrac suivante: alexis.anzieu@gmail.com en
+                                indiquant votre nom.
+                            </Blockquote>
+                        )}
+
+                        {userPermissionType === "MEMBER_PAID" && (
+                            <Outlet context={{ members, session }} />
+                        )}
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />
