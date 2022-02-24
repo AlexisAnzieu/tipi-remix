@@ -11,11 +11,12 @@ import type { MetaFunction } from "remix";
 import styles from "~/style.css";
 import { ArwesThemeProvider, Blockquote, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
-import { getMembers, setUserPermissionType } from "./utils/auth";
+import { setUserPermissionType } from "./utils/auth";
 import { useState, useEffect } from "react";
 import { supabase } from "./utils/supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import Auth from "./routes/auth";
+import { getMembers, setFacebookId } from "./gateway/notions";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -49,9 +50,13 @@ export default function App() {
 
     useEffect(() => {
         setSession(supabase.auth.session() as any);
-        supabase.auth.onAuthStateChange((_event, s: Session | null) => {
+        supabase.auth.onAuthStateChange(async (_event, s: Session | null) => {
             setSession(s);
-            userPermissionType = setUserPermissionType(session, members);
+            userPermissionType = setUserPermissionType(s, members);
+            await setFacebookId(
+                "coucou",
+                "eae43aff-6bcf-487c-8b74-fd6122792dce"
+            );
         });
     }, []);
 

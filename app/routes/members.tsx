@@ -1,8 +1,12 @@
-import { Link, useOutletContext } from "remix";
+import { Link, useNavigate, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
 
 export default function Members() {
     const { members } = useOutletContext<any>();
+    const navigate = useNavigate();
+    const extractedMembers = members.map(
+        (row: any) => row.properties.fullName.title[0].plain_text
+    );
 
     const cleanData = members.map((e: any) => ({
         team: e.properties.Team.select.name,
@@ -34,15 +38,20 @@ export default function Members() {
             columns: [
                 {
                     id: "i",
-                    data: `${e.properties.firstName.title[0].plain_text} ${
-                        e.properties.lastName.rich_text[0]?.plain_text || ""
-                    }`,
+                    data: e.properties.fullName.title[0].plain_text,
                 },
                 { id: "j", data: e.properties.Team.select.name },
                 { id: "k", data: e.properties.Score.number || 0 },
             ],
         };
     });
+
+    const showProfile = (e: any) => {
+        const id = e.target.outerText;
+        if (extractedMembers.find((e: any) => e === id)) {
+            navigate(`/profile/${id}`);
+        }
+    };
 
     return (
         <>
@@ -62,16 +71,18 @@ export default function Members() {
                 columnWidths={["50%", "50%"]}
             />
             <h1>Par mercenaires</h1>
-            <Table
-                animator={{ animate: false }}
-                headers={[
-                    { id: "a", data: "Nom" },
-                    { id: "c", data: "Équipe" },
-                    { id: "b", data: "Score" },
-                ]}
-                dataset={datasetMercenaires}
-                columnWidths={["40%", "40%", "20%"]}
-            />
+            <div onClick={showProfile}>
+                <Table
+                    animator={{ animate: false }}
+                    headers={[
+                        { id: "a", data: "Nom" },
+                        { id: "c", data: "Équipe" },
+                        { id: "b", data: "Score" },
+                    ]}
+                    dataset={datasetMercenaires}
+                    columnWidths={["40%", "40%", "20%"]}
+                />
+            </div>
         </>
     );
 }
