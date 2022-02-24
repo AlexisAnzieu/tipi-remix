@@ -68,14 +68,7 @@ export default function Members() {
     });
 
     return (
-        <ArwesThemeProvider>
-            <StylesBaseline
-                styles={{
-                    "html, body": {
-                        padding: "10px",
-                    },
-                }}
-            />
+        <>
             {userPermissionType === "MEMBER_PAID" && (
                 <>
                     <Link to="/">
@@ -106,6 +99,6 @@ export default function Members() {
                     />
                 </>
             )}
-        </ArwesThemeProvider>
+        </>
     );
 }
