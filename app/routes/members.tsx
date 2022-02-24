@@ -1,15 +1,20 @@
 import { Link, useNavigate, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
 
+const filterPaidMembers = (members: any) => {
+    return members.filter((row: any) => row.properties.hasPaid.checkbox);
+};
+
 export default function Members() {
     const { members } = useOutletContext<any>();
     const navigate = useNavigate();
-    const extractedMembers = members.map(
+    const paidMembers = filterPaidMembers(members);
+    const extractedMembers = paidMembers.map(
         (row: any) => row.properties.fullName.title[0].plain_text
     );
 
-    const cleanData = members.map((e: any) => ({
-        team: e.properties.Team.select.name,
+    const cleanData = paidMembers.map((e: any) => ({
+        team: e.properties.Team.select?.name,
         score: e.properties.Score.number || 0,
     }));
 
@@ -32,7 +37,7 @@ export default function Members() {
         })
     );
 
-    const datasetMercenaires = members.map((e: any, index: any) => {
+    const datasetMercenaires = paidMembers.map((e: any, index: any) => {
         return {
             id: index,
             columns: [
@@ -40,7 +45,7 @@ export default function Members() {
                     id: "i",
                     data: e.properties.fullName.title[0].plain_text,
                 },
-                { id: "j", data: e.properties.Team.select.name },
+                { id: "j", data: e.properties.Team.select?.name || "Aucune" },
                 { id: "k", data: e.properties.Score.number || 0 },
             ],
         };
@@ -60,7 +65,7 @@ export default function Members() {
             </Link>
             <br />
             <br />
-            <h1>Par équipes</h1>
+            {/* <h1>Équipes</h1>
             <Table
                 animator={{ animate: false }}
                 headers={[
@@ -69,8 +74,8 @@ export default function Members() {
                 ]}
                 dataset={datasetTeams}
                 columnWidths={["50%", "50%"]}
-            />
-            <h1>Par mercenaires</h1>
+            /> */}
+            <h1>Mercenaires</h1>
             <div onClick={showProfile}>
                 <Table
                     animator={{ animate: false }}

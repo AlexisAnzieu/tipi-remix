@@ -22,24 +22,3 @@ export const getMembers = async () => {
     });
     return res.results;
 };
-
-export const setFacebookId = async (facebookId: string, pageId: string) => {
-    console.log(facebookId, pageId);
-
-    const res = await notion.pages.update({
-        page_id: pageId,
-        properties: {
-            facebookId: {
-                rich_text: [
-                    {
-                        text: {
-                            content: facebookId,
-                        },
-                    },
-                ],
-            },
-        },
-    });
-    console.log(res);
-    return res.id;
-};

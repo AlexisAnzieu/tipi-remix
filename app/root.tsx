@@ -9,14 +9,19 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/style.css";
-import { ArwesThemeProvider, Blockquote, StylesBaseline } from "@arwes/core";
+import {
+    ArwesThemeProvider,
+    Blockquote,
+    Button,
+    StylesBaseline,
+} from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
 import { useState, useEffect } from "react";
 import { supabase } from "./utils/supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import Auth from "./routes/auth";
-import { getMembers, setFacebookId } from "./gateway/notions";
+import { getMembers } from "./gateway/notions";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -53,10 +58,6 @@ export default function App() {
         supabase.auth.onAuthStateChange(async (_event, s: Session | null) => {
             setSession(s);
             userPermissionType = setUserPermissionType(s, members);
-            await setFacebookId(
-                "coucou",
-                "eae43aff-6bcf-487c-8b74-fd6122792dce"
-            );
         });
     }, []);
 
@@ -94,13 +95,21 @@ export default function App() {
                         )}
 
                         {userPermissionType === "MEMBER_NO_PAID" && (
-                            <Blockquote palette="secondary">
-                                {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquitté.`}
-                                <br /> <br />
-                                Pour ce faire, veuillez envoyer 80$ à l'adresse
-                                interrac suivante: alexis.anzieu@gmail.com en
-                                indiquant votre nom.
-                            </Blockquote>
+                            <>
+                                <Blockquote palette="secondary">
+                                    {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquitté.`}
+                                    <br /> <br />
+                                    Pour ce faire, veuillez payer les 85$
+                                    d'inscription, nos équipes se chargeront de
+                                    vérifier le paiement avant de vous valider
+                                    l'accès au portail galactique.
+                                </Blockquote>
+                                <a href="https://buy.stripe.com/test_00g179ePQfJR480288">
+                                    <Button palette="secondary" active>
+                                        Payer les frais d'inscription
+                                    </Button>
+                                </a>
+                            </>
                         )}
 
                         {userPermissionType === "MEMBER_PAID" && (
