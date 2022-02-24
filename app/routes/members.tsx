@@ -1,25 +1,33 @@
-import { useLoaderData, useNavigate } from "remix";
-import { ArwesThemeProvider, StylesBaseline, Table } from "@arwes/core";
-import getMembers from "./api/getMembers";
+import { Link, useLoaderData, useNavigate } from "remix";
+import {
+    ArwesThemeProvider,
+    Button,
+    StylesBaseline,
+    Table,
+    Text,
+} from "@arwes/core";
 import { supabase } from "~/utils/supabaseClient";
 import { useEffect } from "react";
+import { getMembers, setUserPermissionType } from "~/utils/auth";
 
 export const loader = async () => {
-    return getMembers();
+    const members = await getMembers();
+    return { members };
 };
 
 export default function Members() {
     let navigate = useNavigate();
     const session = supabase.auth.session() as any;
+    const { members } = useLoaderData();
+    let userPermissionType = setUserPermissionType(session, members);
 
     useEffect(() => {
-        if (!session) {
+        if (userPermissionType !== "MEMBER_PAID") {
             navigate("/");
         }
     }, []);
 
-    const data = useLoaderData();
-    const cleanData = data.map((e: any) => ({
+    const cleanData = members.map((e: any) => ({
         team: e.properties.Team.select.name,
         score: e.properties.Score.number || 0,
     }));
@@ -43,7 +51,7 @@ export default function Members() {
         })
     );
 
-    const datasetMercenaires = data.map((e: any, index: any) => {
+    const datasetMercenaires = members.map((e: any, index: any) => {
         return {
             id: index,
             columns: [
@@ -68,8 +76,13 @@ export default function Members() {
                     },
                 }}
             />
-            {session && (
+            {userPermissionType === "MEMBER_PAID" && (
                 <>
+                    <Link to="/">
+                        <Button palette="primary">Retour au portail</Button>
+                    </Link>
+                    <br />
+                    <br />
                     <h1>Par équipes</h1>
                     <Table
                         animator={{ animate: false }}
