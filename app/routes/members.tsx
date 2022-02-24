@@ -1,24 +1,13 @@
-import { Link, useLoaderData, useNavigate } from "remix";
-import {
-    ArwesThemeProvider,
-    Button,
-    StylesBaseline,
-    Table,
-    Text,
-} from "@arwes/core";
+import { Link, useNavigate, useOutletContext } from "remix";
+import { Button, Table } from "@arwes/core";
 import { supabase } from "~/utils/supabaseClient";
 import { useEffect } from "react";
-import { getMembers, setUserPermissionType } from "~/utils/auth";
-
-export const loader = async () => {
-    const members = await getMembers();
-    return { members };
-};
+import { setUserPermissionType } from "~/utils/auth";
 
 export default function Members() {
     let navigate = useNavigate();
     const session = supabase.auth.session() as any;
-    const { members } = useLoaderData();
+    const { members } = useOutletContext<any>();
     let userPermissionType = setUserPermissionType(session, members);
 
     useEffect(() => {

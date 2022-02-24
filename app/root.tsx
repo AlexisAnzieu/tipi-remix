@@ -5,11 +5,13 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    useLoaderData,
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/style.css";
 import { ArwesThemeProvider, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
+import { getMembers } from "./utils/auth";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -31,7 +33,13 @@ export function links() {
     ];
 }
 
+export const loader = async () => {
+    const members = await getMembers();
+    return { members };
+};
+
 export default function App() {
+    const { members } = useLoaderData();
     return (
         <html lang="en">
             <head>
@@ -56,7 +64,7 @@ export default function App() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        <Outlet />
+                        <Outlet context={{ members }} />
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />

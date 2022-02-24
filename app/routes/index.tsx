@@ -10,17 +10,12 @@ import { useState, useEffect } from "react";
 import { supabase } from "~/utils/supabaseClient";
 import wallpaper from "~/images/wallpaper.jpeg";
 import { Session } from "@supabase/supabase-js";
-import { Link, useLoaderData } from "remix";
-import { getMembers, setUserPermissionType } from "~/utils/auth";
-
-export const loader = async () => {
-    const members = await getMembers();
-    return { members };
-};
+import { Link, useOutletContext } from "remix";
+import { setUserPermissionType } from "~/utils/auth";
 
 export default function Index() {
     const [session, setSession] = useState<Session | null>(null);
-    const { members } = useLoaderData();
+    const { members } = useOutletContext<any>();
     let userPermissionType = setUserPermissionType(session, members);
 
     useEffect(() => {
