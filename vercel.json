@@ -1,7 +1,8 @@
 {
-  "build": {
-    "env": {
-      "ENABLE_FILE_SYSTEM_API": "1"
+    "build": {
+        "env": {
+            "ENABLE_FILE_SYSTEM_API": "1",
+            "WEBSITE_URL": "https://tipi-festival.com"
+        }
     }
-  }
 }

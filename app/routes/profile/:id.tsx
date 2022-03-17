@@ -3,7 +3,6 @@ import { Link, useOutletContext } from "remix";
 
 export default function Profile() {
     const { session } = useOutletContext<any>();
-    console.log(session._json.picture.data);
     return (
         <>
             <h1>Carte d'identification</h1>

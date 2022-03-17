@@ -9,7 +9,6 @@ export const setUserPermissionType = (
     session: any | null,
     members: any
 ): "NONE" | "INVALID_MEMBER" | "MEMBER_NO_PAID" | "MEMBER_PAID" => {
-    console.log(session)
     const extractedMembers: { name: string; hasPaid: boolean }[] = extractMembers(members);
     if (!session) {
         return "NONE";
