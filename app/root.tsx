@@ -96,7 +96,7 @@ export default function App() {
                         {userPermissionType === "INVALID_MEMBER" && (
                             <>
                                 <Blockquote palette="error">
-                                    {`${session?.user?.user_metadata.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gène occasionnée.`}
+                                    {`${session?.user?.user_metadata.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
                                 </Blockquote>
                             </>
                         )}
