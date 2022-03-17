@@ -9,7 +9,9 @@ export default function Index() {
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
             <Link to={`/profile/${session?.user?.user_metadata.slug}`}>
-                <Button FrameComponent={FrameUnderline}>Mon profil</Button>
+                <Button FrameComponent={FrameUnderline}>
+                    Carte d'identification
+                </Button>
             </Link>
             <br />
             <Link to="/members">
@@ -19,6 +21,37 @@ export default function Index() {
             </Link>
             <br />
             <br />
+            <h5>13 Mars 2150 - 17:09:13</h5>
+            <FrameHexagon
+                animator={{
+                    duration: {
+                        enter: 1000,
+                    },
+                    activate: true,
+                }}
+                hover
+            >
+                <Text
+                    animator={{
+                        duration: {
+                            enter: 5000,
+                            exit: 1000,
+                        },
+                        activate: true,
+                    }}
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
+                    La prime attire des mercenaires de tout horizon. Leurs
+                    accoutrements dépassent l'ententement, on dirait un concours
+                    des plus belles pararures de la galaxie.
+                </Text>
+            </FrameHexagon>
+            <br />
+            <br />
+            <h5>31 Janvier 2150 - 10:09:13</h5>
             <FrameHexagon
                 animator={{
                     duration: {
@@ -53,17 +86,17 @@ export default function Index() {
                     prime de 2 millions de tipiz (tpz) est offerte à ceux qui
                     lèveront le voile sur cette étrange phénomène.
                 </Text>
+
+                <img
+                    style={{
+                        paddingTop: "50px",
+                    }}
+                    src={wallpaper}
+                    alt="A nebula"
+                />
             </FrameHexagon>
             <br />
             <br />
-
-            <img
-                style={{
-                    paddingTop: "50px",
-                }}
-                src={wallpaper}
-                alt="A nebula"
-            />
         </>
     );
 }

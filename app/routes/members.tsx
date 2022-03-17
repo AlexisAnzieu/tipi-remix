@@ -52,10 +52,10 @@ export default function Members() {
     });
 
     const showProfile = (e: any) => {
-        const id = e.target.outerText;
-        if (extractedMembers.find((e: any) => e === id)) {
-            navigate(`/profile/${id}`);
-        }
+        // const id = e.target.outerText;
+        // if (extractedMembers.find((e: any) => e === id)) {
+        //     navigate(`/profile/${id}`);
+        // }
     };
 
     return (

@@ -31,7 +31,10 @@ const animatorGeneral = {
 };
 
 export const meta: MetaFunction = () => {
-    return { title: "Portail intergalactique" };
+    return {
+        title: "Portail intergalactique",
+        description: "Interface de recherche intergalactique TiPi",
+    };
 };
 
 export function links() {
@@ -39,6 +42,10 @@ export function links() {
         {
             rel: "stylesheet",
             href: styles,
+        },
+        {
+            rel: "icon",
+            href: "/favicon.png",
         },
     ];
 }
