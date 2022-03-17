@@ -10,15 +10,7 @@ export default function Profile() {
         <>
             <h1>Carte d'identification</h1>
             <Link to="/">
-                <Button
-                    onClick={() => {
-                        const hasHistory = window.history.length > 2;
-                        hasHistory ? navigate(-1) : navigate("/");
-                    }}
-                    FrameComponent={FrameUnderline}
-                >
-                    Retour
-                </Button>
+                <Button FrameComponent={FrameUnderline}>Retour</Button>
             </Link>
             <h4 style={{ paddingTop: "60px" }}>Nom</h4>
             <Text
