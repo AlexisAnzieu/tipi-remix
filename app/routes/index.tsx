@@ -8,7 +8,7 @@ export default function Index() {
     return (
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
-            <Link to={`/profile/${session?.user?.user_metadata.slug}`}>
+            <Link to={`/profile/${session.displayName}`}>
                 <Button FrameComponent={FrameUnderline}>
                     Carte d'identification
                 </Button>

@@ -1,5 +1,3 @@
-import { Session } from "@supabase/supabase-js";
-
 const extractMembers = (table: any) => {
     return table.map((row: any) => ({
         name: row.properties.fullName.title[0].plain_text,
@@ -8,14 +6,15 @@ const extractMembers = (table: any) => {
 };
 
 export const setUserPermissionType = (
-    session: Session | null,
+    session: any | null,
     members: any
 ): "NONE" | "INVALID_MEMBER" | "MEMBER_NO_PAID" | "MEMBER_PAID" => {
+    console.log(session)
     const extractedMembers: { name: string; hasPaid: boolean }[] = extractMembers(members);
     if (!session) {
         return "NONE";
     }
-    const fullName = session.user?.user_metadata.full_name;
+    const fullName = session.displayName;
     const found = extractedMembers.find((element) => element.name === fullName);
     if (!found) {
         return "INVALID_MEMBER";

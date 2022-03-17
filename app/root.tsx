@@ -17,11 +17,9 @@ import {
 } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
-import { useState, useEffect } from "react";
-import { supabase } from "./utils/supabaseClient";
-import { Session } from "@supabase/supabase-js";
 import Auth from "./routes/auth";
 import { getMembers } from "./gateway/notions";
+import { authenticator } from "./utils/auth.server";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -50,23 +48,15 @@ export function links() {
     ];
 }
 
-export const loader = async () => {
+export const loader = async ({ request }: any) => {
+    const session = await authenticator.isAuthenticated(request);
     const members = await getMembers();
-    return { members };
+    return { members, session };
 };
 
 export default function App() {
-    const [session, setSession] = useState<Session | null>(null);
-    const { members } = useLoaderData();
+    const { members, session } = useLoaderData();
     let userPermissionType = setUserPermissionType(session, members);
-
-    useEffect(() => {
-        setSession(supabase.auth.session() as any);
-        supabase.auth.onAuthStateChange(async (_event, s: Session | null) => {
-            setSession(s);
-            userPermissionType = setUserPermissionType(s, members);
-        });
-    }, []);
 
     return (
         <html lang="en">
@@ -96,7 +86,7 @@ export default function App() {
                         {userPermissionType === "INVALID_MEMBER" && (
                             <>
                                 <Blockquote palette="error">
-                                    {`${session?.user?.user_metadata.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
+                                    {`${session.displayName} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
                                 </Blockquote>
                             </>
                         )}
@@ -104,7 +94,7 @@ export default function App() {
                         {userPermissionType === "MEMBER_NO_PAID" && (
                             <>
                                 <Blockquote palette="secondary">
-                                    {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés.`}
+                                    {`${session.displayName} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés.`}
                                     <br /> <br />
                                     Pour ce faire, veuillez payer les 80$
                                     d'inscription, nos équipes se chargeront de

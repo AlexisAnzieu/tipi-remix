@@ -1,18 +1,7 @@
 import { Text, Button, FrameHexagon } from "@arwes/core";
-import { supabase } from "~/utils/supabaseClient";
+import { Form } from "remix";
 
 export default function Auth() {
-    const signInWithFacebook = async () => {
-        try {
-            const { error } = await supabase.auth.signIn({
-                provider: "facebook",
-            });
-            if (error) throw error;
-        } catch (error: any) {
-            alert(error.error_description || error.message);
-        }
-    };
-
     return (
         <>
             <FrameHexagon
@@ -53,12 +42,11 @@ export default function Auth() {
                     marginTop: "50px",
                 }}
             >
-                <Button
-                    animator={{ activate: true }}
-                    onClick={() => signInWithFacebook()}
-                >
-                    <Text>Devenir mercenaire</Text>
-                </Button>
+                <Form action={"/auth/facebook"} method="post">
+                    <Button animator={{ activate: true }}>
+                        <Text>Devenir mercenaire</Text>
+                    </Button>
+                </Form>
             </div>
         </>
     );
