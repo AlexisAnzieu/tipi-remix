@@ -46,7 +46,7 @@ export default function Index() {
                 >
                     La prime attire des mercenaires de tout horizon. Leurs
                     accoutrements dépassent l'ententement, on dirait un concours
-                    des plus belles pararures de la galaxie.
+                    des plus belles parures de la galaxie.
                 </Text>
             </FrameHexagon>
             <br />
