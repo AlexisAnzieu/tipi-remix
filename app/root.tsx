@@ -106,7 +106,7 @@ export default function App() {
                                 <Blockquote palette="secondary">
                                     {`${session?.user?.user_metadata.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés.`}
                                     <br /> <br />
-                                    Pour ce faire, veuillez payer les 85$
+                                    Pour ce faire, veuillez payer les 80$
                                     d'inscription, nos équipes se chargeront de
                                     vérifier le paiement avant de vous valider
                                     l'accès au portail galactique.
