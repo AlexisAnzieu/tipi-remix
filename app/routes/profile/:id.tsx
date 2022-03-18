@@ -1,8 +1,17 @@
 import { Button, FrameUnderline, Text } from "@arwes/core";
-import { Link, useOutletContext } from "remix";
+import { Link, useLoaderData } from "remix";
+import { directus } from "~/utils/directus";
+
+export const loader = async ({ params }: any) => {
+    const { data: user } = await directus
+        .items("tipi_users")
+        .readByQuery({ filter: { name: params.id } });
+    return { user: user?.[0] };
+};
 
 export default function Profile() {
-    const { session } = useOutletContext<any>();
+    const { user } = useLoaderData();
+
     return (
         <>
             <h1>Carte d'identification</h1>
@@ -13,7 +22,7 @@ export default function Profile() {
                 style={{
                     paddingTop: "50px",
                 }}
-                src={session._json.picture.data.url}
+                src={user.picture}
                 alt="A nebula"
             />
             <h4 style={{ paddingTop: "60px" }}>Nom</h4>
@@ -21,14 +30,14 @@ export default function Profile() {
                 style={{ paddingBottom: "30px" }}
                 animator={{ duration: { enter: 1000, exit: 1000 } }}
             >
-                {session.displayName}
+                {user.name}
             </Text>
             <h4>Adresse Galactique</h4>
             <Text
                 style={{ paddingBottom: "30px" }}
                 animator={{ duration: { enter: 1000, exit: 1000 } }}
             >
-                {session._json.email}
+                {user.email}
             </Text>
             <h4>Status opérationnel</h4>
             <Text animator={{ duration: { enter: 1000, exit: 1000 } }}>

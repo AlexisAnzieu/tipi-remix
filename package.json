@@ -13,6 +13,7 @@
         "@arwes/core": "^1.0.0-alpha.19",
         "@arwes/design": "^1.0.0-alpha.19",
         "@arwes/sounds": "^1.0.0-alpha.19",
+        "@directus/sdk": "^9.6.0",
         "@emotion/css": "^11.7.1",
         "@emotion/react": "^11.7.1",
         "@notionhq/client": "^0.4.13",

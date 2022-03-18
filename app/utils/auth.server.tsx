@@ -2,6 +2,7 @@ import { Authenticator } from "remix-auth";
 import { FacebookStrategy, SocialsProvider } from "remix-auth-socials";
 import { sessionStorage } from "~/utils/session.server";
 import "dotenv/config";
+import { directus } from "./directus";
 
 // Create an instance of the authenticator, pass a generic <User> type which the
 // strategies will return (this will be stored in the session)
@@ -17,8 +18,25 @@ authenticator.use(
             callbackURL: `${process.env.WEBSITE_URL}/auth/${SocialsProvider.FACEBOOK}/callback`,
             extraProfileFields: ["picture.width(1000)"] as any,
         },
-        async ({ profile }) => {
-            console.log(profile);
+        async ({ profile }: any) => {
+            const data = {
+                name: profile.displayName,
+                email: profile?.emails?.[0].value,
+                picture: profile?._json.picture?.data?.url,
+            };
+            try {
+                await directus.items("tipi_users").createOne({
+                    ...data,
+                    facebook_id: profile.id,
+                });
+            } catch (error: any) {
+                if (error.errors[0].extensions.code === "RECORD_NOT_UNIQUE") {
+                    await directus
+                        .items("tipi_users")
+                        .updateOne(profile.id, data);
+                }
+            }
+
             return profile;
         }
     )
