@@ -6,11 +6,12 @@ export const action: ActionFunction = async ({ request }: any) => {
     const event = JSON.parse(await bodyParser.toString(request));
     let user;
     if (event.type === "payment_intent.succeeded") {
-        const metadata = event.data.object.metadata;
+        const object = event.data.object;
         user = await directus
             .items("tipi_users")
-            .updateOne(metadata.facebook_id, {
+            .updateOne(object.metadata.facebook_id, {
                 has_paid: true,
+                email: object.receipt_email,
             });
     }
 
