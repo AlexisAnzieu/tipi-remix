@@ -9,17 +9,14 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/style.css";
-import {
-    ArwesThemeProvider,
-    Blockquote,
-    Button,
-    StylesBaseline,
-} from "@arwes/core";
+import { ArwesThemeProvider, Blockquote, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
 import Auth from "./routes/auth";
 import { getMembers } from "./gateway/notions";
 import { authenticator } from "./utils/auth.server";
+
+import { CheckoutComponent } from "./component/CheckoutComponent";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -51,11 +48,17 @@ export function links() {
 export const loader = async ({ request }: any) => {
     const session = await authenticator.isAuthenticated(request);
     const members = await getMembers();
-    return { members, session };
+    return {
+        members,
+        session,
+        ENV: {
+            WEBSITE_URL: process.env.WEBSITE_URL,
+        },
+    };
 };
 
 export default function App() {
-    const { members, session } = useLoaderData();
+    const { members, session, ENV } = useLoaderData();
     let userPermissionType = setUserPermissionType(session, members);
 
     return (
@@ -86,27 +89,15 @@ export default function App() {
                         {userPermissionType === "INVALID_MEMBER" && (
                             <>
                                 <Blockquote palette="error">
-                                    {`${session.displayName} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
+                                    {`${session.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
                                 </Blockquote>
                             </>
                         )}
 
                         {userPermissionType === "MEMBER_NO_PAID" && (
-                            <>
-                                <Blockquote palette="secondary">
-                                    {`${session.displayName} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés.`}
-                                    <br /> <br />
-                                    Pour ce faire, veuillez payer les 80$
-                                    d'inscription, nos équipes se chargeront de
-                                    vérifier le paiement avant de vous valider
-                                    l'accès au portail galactique.
-                                </Blockquote>
-                                <a href="https://buy.stripe.com/test_00g179ePQfJR480288">
-                                    <Button palette="secondary" active>
-                                        Payer les frais d'inscription
-                                    </Button>
-                                </a>
-                            </>
+                            <CheckoutComponent
+                                session={session}
+                            ></CheckoutComponent>
                         )}
 
                         {userPermissionType === "MEMBER_PAID" && (
@@ -115,6 +106,11 @@ export default function App() {
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.ENV = ${JSON.stringify(ENV)}`,
+                    }}
+                />
                 <Scripts />
                 {process.env.NODE_ENV === "development" && <LiveReload />}
             </body>

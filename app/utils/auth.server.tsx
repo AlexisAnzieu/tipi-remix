@@ -25,19 +25,18 @@ authenticator.use(
                 picture: profile?._json.picture?.data?.url,
             };
             try {
-                await directus.items("tipi_users").createOne({
+                const user = await directus.items("tipi_users").createOne({
                     ...data,
                     facebook_id: profile.id,
                 });
+                return user;
             } catch (error: any) {
                 if (error.errors[0].extensions.code === "RECORD_NOT_UNIQUE") {
-                    await directus
+                    return directus
                         .items("tipi_users")
                         .updateOne(profile.id, data);
                 }
             }
-
-            return profile;
         }
     )
 );

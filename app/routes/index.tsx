@@ -1,5 +1,4 @@
 import { Text, FrameHexagon, Button, FrameUnderline } from "@arwes/core";
-import wallpaper from "~/images/wallpaper.jpeg";
 import { Link, useOutletContext } from "remix";
 
 export default function Index() {
@@ -8,7 +7,7 @@ export default function Index() {
     return (
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
-            <Link to={`/profile/${session.displayName}`}>
+            <Link to={`/profile/${session.name}`}>
                 <Button FrameComponent={FrameUnderline}>
                     Carte d'identification
                 </Button>
@@ -91,7 +90,7 @@ export default function Index() {
                     style={{
                         paddingTop: "50px",
                     }}
-                    src={wallpaper}
+                    src="./images/wallpaper.jpeg"
                     alt="A nebula"
                 />
             </FrameHexagon>
