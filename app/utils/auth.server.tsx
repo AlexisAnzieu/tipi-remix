@@ -31,7 +31,7 @@ authenticator.use(
                 });
                 return user;
             } catch (error: any) {
-                if (error.errors[0].extensions.code === "RECORD_NOT_UNIQUE") {
+                if (error.errors[0]?.extensions.code === "RECORD_NOT_UNIQUE") {
                     return directus
                         .items("tipi_users")
                         .updateOne(profile.id, data);

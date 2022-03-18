@@ -5,7 +5,6 @@ import {
 } from "@stripe/react-stripe-js";
 import { StripeError } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
-
 export const CheckoutFormComponent = ({ session }: any): JSX.Element => {
     const stripe = useStripe();
     const elements = useElements();
@@ -62,7 +61,9 @@ export const CheckoutFormComponent = ({ session }: any): JSX.Element => {
             elements,
             confirmParams: {
                 // Make sure to change this to your payment completion page
-                return_url: (window as any).ENV.WEBSITE_URL as string,
+                return_url: `${
+                    (window as any).ENV.WEBSITE_URL
+                }/auth/updateCookie`,
                 receipt_email: email,
                 payment_method_data: {
                     billing_details: {

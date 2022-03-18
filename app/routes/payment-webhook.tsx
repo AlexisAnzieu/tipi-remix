@@ -12,7 +12,6 @@ export const action: ActionFunction = async ({ request }: any) => {
             .updateOne(metadata.facebook_id, {
                 has_paid: true,
             });
-        console.log(user);
     }
 
     return json(user);
