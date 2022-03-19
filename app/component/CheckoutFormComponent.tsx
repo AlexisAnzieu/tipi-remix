@@ -103,7 +103,7 @@ export const CheckoutFormComponent = ({ session }: any): JSX.Element => {
                     {isLoading ? (
                         <div className="spinner" id="spinner"></div>
                     ) : (
-                        "Payer les frais d'inscription"
+                        "Payer les 80$ de frais d'inscription"
                     )}
                 </span>
             </button>
