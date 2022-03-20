@@ -3,9 +3,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { Blockquote } from "@arwes/core";
 import { useState, useEffect } from "react";
 import { CheckoutFormComponent } from "./CheckoutFormComponent";
-import "dotenv/config";
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY as string);
+const stripePromise = loadStripe((window as any).ENV.WEBSITE_URL);
 
 export const CheckoutComponent = ({ session }: any): JSX.Element => {
     const [clientSecret, setClientSecret] = useState("");

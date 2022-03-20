@@ -53,6 +53,7 @@ export const loader = async ({ request }: any) => {
         session,
         ENV: {
             WEBSITE_URL: process.env.WEBSITE_URL,
+            STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
         },
     };
 };
