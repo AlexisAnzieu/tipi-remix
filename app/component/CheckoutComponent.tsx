@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { CheckoutFormComponent } from "./CheckoutFormComponent";
 
 export const CheckoutComponent = ({ session }: any): JSX.Element => {
-    const stripePromise = loadStripe((window as any).ENV.WEBSITE_URL);
     const [clientSecret, setClientSecret] = useState("");
     const appearance = {
         theme: "night",
@@ -34,7 +33,12 @@ export const CheckoutComponent = ({ session }: any): JSX.Element => {
             </Blockquote>
             <div className="App">
                 {clientSecret && (
-                    <Elements options={options} stripe={stripePromise}>
+                    <Elements
+                        options={options}
+                        stripe={loadStripe(
+                            (window as any).ENV.STRIPE_PUBLIC_KEY
+                        )}
+                    >
                         <CheckoutFormComponent session={session} />
                     </Elements>
                 )}
