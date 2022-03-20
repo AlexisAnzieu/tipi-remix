@@ -4,9 +4,8 @@ import { Blockquote } from "@arwes/core";
 import { useState, useEffect } from "react";
 import { CheckoutFormComponent } from "./CheckoutFormComponent";
 
-const stripePromise = loadStripe((window as any).ENV.WEBSITE_URL);
-
 export const CheckoutComponent = ({ session }: any): JSX.Element => {
+    const stripePromise = loadStripe((window as any).ENV.WEBSITE_URL);
     const [clientSecret, setClientSecret] = useState("");
     const appearance = {
         theme: "night",
