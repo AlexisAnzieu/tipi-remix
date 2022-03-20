@@ -1,6 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { Blockquote } from "@arwes/core";
+import { Blockquote, Text } from "@arwes/core";
 import { useState, useEffect } from "react";
 import { CheckoutFormComponent } from "./CheckoutFormComponent";
 
@@ -25,11 +25,14 @@ export const CheckoutComponent = ({ session }: any): JSX.Element => {
     return (
         <>
             <Blockquote palette="primary">
-                {`${session.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés.`}
-                <br /> <br />
-                Pour ce faire, veuillez payer les 80$ de frais d'inscription,
-                nos équipes se chargeront de vérifier le paiement avant de vous
-                valider l'accès au portail galactique.
+                <Text>
+                    {`${session.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés. Pour ce faire, veuillez payer les 80$ de frais d'inscription.`}
+                    <br /> <br />
+                    En cas de problème,{" "}
+                    <a target="_blank" href="https://m.me/alexisanzieu">
+                        veuillez contacter l'administrateur système planétaire.
+                    </a>
+                </Text>
             </Blockquote>
             <div className="App">
                 {clientSecret && (
