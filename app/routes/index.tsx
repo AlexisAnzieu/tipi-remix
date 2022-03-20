@@ -20,7 +20,7 @@ export default function Index() {
             </Link>
             <br />
             <br />
-            <h5>13 Mars 2150 - 17:09:13</h5>
+            <h5>13 Mars 2150 - 17:29:35</h5>
             <FrameHexagon
                 animator={{
                     duration: {
