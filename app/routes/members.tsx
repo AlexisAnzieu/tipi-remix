@@ -1,14 +1,27 @@
-import { Link, useNavigate, useOutletContext } from "remix";
+import { Link, useLoaderData, useNavigate, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
+import { directus } from "~/utils/directus";
 
-const filterPaidMembers = (members: any) => {
-    return members.filter((row: any) => row.properties.hasPaid.checkbox);
+export const loader = async () => {
+    const users = await directus.items("tipi_users").readByQuery();
+    return {
+        users: users.data,
+    };
+};
+
+const filterPaidMembers = (members: any, users: any) => {
+    return members.filter((row: any) => {
+        const name = row.properties.fullName.title[0].plain_text;
+        const user = users.find((u: any) => u.name === name);
+        return user?.has_paid;
+    });
 };
 
 export default function Members() {
+    const { users } = useLoaderData();
     const { members } = useOutletContext<any>();
     const navigate = useNavigate();
-    const paidMembers = filterPaidMembers(members);
+    const paidMembers = filterPaidMembers(members, users);
     const extractedMembers = paidMembers.map(
         (row: any) => row.properties.fullName.title[0].plain_text
     );
@@ -85,7 +98,7 @@ export default function Members() {
                         { id: "b", data: "Score" },
                     ]}
                     dataset={datasetMercenaires}
-                    columnWidths={["40%", "40%", "20%"]}
+                    columnWidths={["40%", "35%", "25%"]}
                 />
             </div>
         </>

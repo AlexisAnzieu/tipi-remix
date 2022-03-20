@@ -23,6 +23,7 @@ authenticator.use(
                 name: profile.displayName,
                 email: profile?.emails?.[0].value,
                 picture: profile?._json.picture?.data?.url,
+                has_paid: true,
             };
             try {
                 const user = await directus.items("tipi_users").createOne({
@@ -36,6 +37,7 @@ authenticator.use(
                         .items("tipi_users")
                         .updateOne(profile.id, data);
                 }
+                return data;
             }
         }
     )
