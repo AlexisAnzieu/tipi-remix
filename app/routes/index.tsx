@@ -47,6 +47,13 @@ export default function Index() {
                     accoutrements dépassent l'ententement, on dirait un concours
                     des plus belles parures de la galaxie.
                 </Text>
+                <img
+                    style={{
+                        paddingTop: "20px",
+                    }}
+                    src="./images/moodboard.png"
+                    alt="A nebula"
+                />
             </FrameHexagon>
             <br />
             <br />
