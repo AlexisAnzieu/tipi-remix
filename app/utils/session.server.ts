@@ -3,7 +3,7 @@ import { createCookieSessionStorage } from "remix";
 // export the whole sessionStorage object
 export let sessionStorage = createCookieSessionStorage({
     cookie: {
-        name: "tipisession", // use any name you want here
+        name: "_session", // use any name you want here
     },
 });
 

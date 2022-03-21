@@ -7,8 +7,8 @@ export let loader: LoaderFunction = async ({ request, params }) => {
         ...session,
         data: {
             ...session.data,
-            tipisession: {
-                ...session.data.tipisession,
+            _session: {
+                ...session.data._session,
                 has_paid: true,
             },
         },
