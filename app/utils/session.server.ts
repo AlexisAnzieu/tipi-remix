@@ -4,7 +4,7 @@ import { createCookieSessionStorage } from "remix";
 export let sessionStorage = createCookieSessionStorage({
     cookie: {
         name: "_session", // use any name you want here
-        sameSite: "none", // this helps with CSRF
+        sameSite: "lax", // this helps with CSRF
         path: "/", // remember to add this so the cookie will work in all routes
         httpOnly: true, // for security reasons, make this cookie http only
         secrets: ["newsecret"], // replace this with an actual secret
