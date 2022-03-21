@@ -61,9 +61,7 @@ export const CheckoutFormComponent = ({ session }: any): JSX.Element => {
             elements,
             confirmParams: {
                 // Make sure to change this to your payment completion page
-                return_url: `${
-                    (window as any).ENV.WEBSITE_URL
-                }/auth/updateCookie`,
+                return_url: `${(window as any).ENV.WEBSITE_URL}/updateCookie`,
                 receipt_email: email,
                 payment_method_data: {
                     billing_details: {
