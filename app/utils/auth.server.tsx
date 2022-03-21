@@ -7,7 +7,7 @@ import { directus } from "./directus";
 // Create an instance of the authenticator, pass a generic <User> type which the
 // strategies will return (this will be stored in the session)
 export let authenticator = new Authenticator(sessionStorage, {
-    sessionKey: "_session",
+    sessionKey: "tipisession",
 });
 
 authenticator.use(
