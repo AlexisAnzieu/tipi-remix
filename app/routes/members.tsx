@@ -49,7 +49,10 @@ export default function Members() {
                     id: "i",
                     data: e.properties.fullName.title[0].plain_text,
                 },
-                { id: "j", data: e.properties.Team.select?.name || "Aucune" },
+                {
+                    id: "j",
+                    data: e.properties.Team.select?.name || "-",
+                },
                 { id: "k", data: e.properties.Score.number || 0 },
             ],
         };

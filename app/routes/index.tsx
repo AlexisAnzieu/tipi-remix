@@ -7,6 +7,12 @@ export default function Index() {
     return (
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
+            <Link to="/frequences">
+                <Button FrameComponent={FrameUnderline}>
+                    Fréquences sonores
+                </Button>
+            </Link>
+            <br />
             <Link to={`/profile/${session.name}`}>
                 <Button FrameComponent={FrameUnderline}>
                     Carte d'identification
