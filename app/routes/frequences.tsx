@@ -93,12 +93,14 @@ export default function Frequences() {
                 animator={{ animate: false }}
                 headers={headers}
                 dataset={dataset("friday")}
+                columnWidths={["27%", "37%", "36%"]}
             />
             <h3>Samedi [20h-4h]</h3>
             <Table
                 animator={{ animate: false }}
                 headers={headers}
                 dataset={dataset("saturday")}
+                columnWidths={["27%", "37%", "36%"]}
             />
         </>
     );
