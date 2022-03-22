@@ -1,4 +1,4 @@
-import { Button, FrameUnderline, Text } from "@arwes/core";
+import { Button, Figure, FrameUnderline, Text } from "@arwes/core";
 import { Link, useLoaderData } from "remix";
 import { directus } from "~/utils/directus";
 
@@ -18,7 +18,8 @@ export default function Profile() {
             <Link to="/">
                 <Button FrameComponent={FrameUnderline}>Retour</Button>
             </Link>
-            <img
+            <Figure
+                fluid
                 style={{
                     paddingTop: "50px",
                 }}
