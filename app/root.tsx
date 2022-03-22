@@ -17,6 +17,7 @@ import { getMembers } from "./gateway/notions";
 import { authenticator } from "./utils/auth.server";
 
 import { CheckoutComponent } from "./component/CheckoutComponent";
+import { directus } from "./utils/directus";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -47,11 +48,15 @@ export function links() {
 }
 
 export const loader = async ({ request }: any) => {
+    const { data: directusUsers } = await directus
+        .items("tipi_users")
+        .readByQuery();
     const session = await authenticator.isAuthenticated(request);
     const members = await getMembers();
     return {
         members,
         session,
+        directusUsers,
         ENV: {
             WEBSITE_URL: process.env.WEBSITE_URL,
             STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
@@ -60,7 +65,7 @@ export const loader = async ({ request }: any) => {
 };
 
 export default function App() {
-    const { members, session, ENV } = useLoaderData();
+    const { members, session, ENV, directusUsers } = useLoaderData();
     let userPermissionType = setUserPermissionType(session, members);
 
     return (
@@ -86,7 +91,13 @@ export default function App() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        {userPermissionType === "NONE" && <Auth />}
+                        {userPermissionType === "NONE" && (
+                            <Auth
+                                users={directusUsers.filter(
+                                    (u: any) => u.has_paid
+                                )}
+                            />
+                        )}
 
                         {userPermissionType === "INVALID_MEMBER" && (
                             <>
@@ -103,7 +114,9 @@ export default function App() {
                         )}
 
                         {userPermissionType === "MEMBER_PAID" && (
-                            <Outlet context={{ members, session }} />
+                            <Outlet
+                                context={{ members, session, directusUsers }}
+                            />
                         )}
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>

@@ -1,9 +1,23 @@
-import { Text, Button, FrameHexagon } from "@arwes/core";
+import {
+    Text,
+    Button,
+    FrameHexagon,
+    LoadingBars,
+    FrameCorners,
+} from "@arwes/core";
 import { Form } from "remix";
 
-export default function Auth() {
+export default function Auth({ users }: any) {
     return (
         <>
+            <div style={{ textAlign: "center", paddingBottom: "2em" }}>
+                <h5>PASS restants [{100 - users.length} / 100]</h5>
+                <LoadingBars
+                    animator={{ activate: true }}
+                    determinate
+                    progress={100 - users.length}
+                />
+            </div>
             <FrameHexagon
                 animator={{
                     duration: {
@@ -40,10 +54,15 @@ export default function Auth() {
             <div
                 style={{
                     marginTop: "50px",
+                    textAlign: "center",
                 }}
             >
                 <Form action={"/auth/facebook"} method="post">
-                    <Button animator={{ activate: true }}>
+                    <Button
+                        FrameComponent={FrameCorners}
+                        style={{ fontSize: "1.2em" }}
+                        animator={{ activate: true }}
+                    >
                         <Text>Devenir mercenaire</Text>
                     </Button>
                 </Form>

@@ -1,13 +1,5 @@
-import { Link, useLoaderData, useNavigate, useOutletContext } from "remix";
+import { Link, useNavigate, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
-import { directus } from "~/utils/directus";
-
-export const loader = async () => {
-    const users = await directus.items("tipi_users").readByQuery();
-    return {
-        users: users.data,
-    };
-};
 
 const filterPaidMembers = (members: any, users: any) => {
     return members.filter((row: any) => {
@@ -18,10 +10,9 @@ const filterPaidMembers = (members: any, users: any) => {
 };
 
 export default function Members() {
-    const { users } = useLoaderData();
-    const { members } = useOutletContext<any>();
+    const { members, directusUsers } = useOutletContext<any>();
     const navigate = useNavigate();
-    const paidMembers = filterPaidMembers(members, users);
+    const paidMembers = filterPaidMembers(members, directusUsers);
     const extractedMembers = paidMembers.map(
         (row: any) => row.properties.fullName.title[0].plain_text
     );
