@@ -26,7 +26,6 @@ export default function Profile() {
                 Retour
             </Button>
             <Figure
-                fluid
                 style={{
                     paddingTop: "50px",
                 }}
