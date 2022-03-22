@@ -1,5 +1,5 @@
 import { Button, Figure, FrameUnderline, Text } from "@arwes/core";
-import { Link, useLoaderData } from "remix";
+import { useLoaderData, useNavigate } from "remix";
 import { directus } from "~/utils/directus";
 
 export const loader = async ({ params }: any) => {
@@ -11,13 +11,20 @@ export const loader = async ({ params }: any) => {
 
 export default function Profile() {
     const { user } = useLoaderData();
+    const navigate = useNavigate();
 
     return (
         <>
             <h1>Carte d'identification</h1>
-            <Link to="/">
-                <Button FrameComponent={FrameUnderline}>Retour</Button>
-            </Link>
+            <Button
+                onClick={() => {
+                    const hasHistory = window.history.length > 2;
+                    hasHistory ? navigate(-1) : navigate("/");
+                }}
+                FrameComponent={FrameUnderline}
+            >
+                Retour
+            </Button>
             <Figure
                 fluid
                 style={{
