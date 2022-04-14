@@ -7,7 +7,7 @@ const notion = new Client({
 const databaseId = "7a30bf647c9f4925baacc3d6721b4fb3";
 
 export const getMembers = async () => {
-    const res = await notion.databases.query({
+    const res1 = await notion.databases.query({
         database_id: databaseId,
         sorts: [
             {
@@ -20,5 +20,20 @@ export const getMembers = async () => {
             },
         ],
     });
-    return res.results;
+
+    const res2 = await notion.databases.query({
+        database_id: databaseId,
+        start_cursor: res1.next_cursor as string,
+        sorts: [
+            {
+                property: "Score",
+                direction: "descending",
+            },
+            {
+                property: "fullName",
+                direction: "ascending",
+            },
+        ],
+    });
+    return [...res1.results, ...res2.results];
 };
