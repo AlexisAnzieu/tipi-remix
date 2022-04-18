@@ -9,7 +9,12 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/style.css";
-import { ArwesThemeProvider, Blockquote, StylesBaseline } from "@arwes/core";
+import {
+    ArwesThemeProvider,
+    Blockquote,
+    StylesBaseline,
+    Text,
+} from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
 import Auth from "./routes/auth";
@@ -102,7 +107,20 @@ export default function App() {
                         {userPermissionType === "INVALID_MEMBER" && (
                             <>
                                 <Blockquote palette="error">
-                                    {`${session.name} ne correspond à aucun nom figurant sur notre liste de mercenaires. Veuillez nous excuser pour la gêne occasionnée.`}
+                                    <Text>
+                                        {session.name} ne correspond à aucun nom
+                                        figurant sur notre liste de mercenaires.
+                                        Si le recrutement s'est effectué par
+                                        Google et que le nom diffère de celui
+                                        utilisé sur Facebook, veuillez{" "}
+                                        <a
+                                            target="_blank"
+                                            href="https://m.me/alexisanzieu"
+                                        >
+                                            contacter l'administrateur système
+                                            planétaire.
+                                        </a>
+                                    </Text>
                                 </Blockquote>
                             </>
                         )}

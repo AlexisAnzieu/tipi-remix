@@ -55,17 +55,40 @@ export default function Auth({ users }: any) {
 
             <div
                 style={{
+                    textAlign: "center",
+                    fontSize: "1.4em",
                     marginTop: "50px",
+                }}
+            >
+                Devenir mercenaire{" "}
+            </div>
+            <div
+                style={{
+                    marginTop: "15px",
                     textAlign: "center",
                 }}
             >
                 <Form action={"/auth/facebook"} method="post">
                     <Button
                         FrameComponent={FrameCorners}
-                        style={{ fontSize: "1.2em" }}
                         animator={{ activate: true }}
                     >
-                        <Text>Devenir mercenaire</Text>
+                        <Text>par Facebook</Text>
+                    </Button>
+                </Form>
+            </div>
+            <div
+                style={{
+                    marginTop: "15px",
+                    textAlign: "center",
+                }}
+            >
+                <Form action={"/auth/google"} method="post">
+                    <Button
+                        FrameComponent={FrameCorners}
+                        animator={{ activate: true }}
+                    >
+                        <Text>par Google</Text>
                     </Button>
                 </Form>
             </div>
