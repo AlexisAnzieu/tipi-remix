@@ -73,7 +73,7 @@ export default function Auth({ users }: any) {
                         FrameComponent={FrameCorners}
                         animator={{ activate: true }}
                     >
-                        <Text>par Facebook</Text>
+                        <Text>par Facebook - Recommandé</Text>
                     </Button>
                 </Form>
             </div>
@@ -88,7 +88,7 @@ export default function Auth({ users }: any) {
                         FrameComponent={FrameCorners}
                         animator={{ activate: true }}
                     >
-                        <Text>par Google</Text>
+                        <Text>par Google - en test</Text>
                     </Button>
                 </Form>
             </div>
