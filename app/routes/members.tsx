@@ -1,25 +1,19 @@
 import { Link, useNavigate, useOutletContext } from "remix";
 import { Button, Table } from "@arwes/core";
 
-const filterPaidMembers = (members: any, users: any) => {
-    return members.filter((row: any) => {
-        const name = row.properties.fullName.title[0].plain_text;
-        const user = users.find((u: any) => u.name === name);
-        return user?.has_paid;
-    });
-};
+const filterPaidMembers = (users: any) =>
+    users
+        .filter((user: any) => user?.has_paid)
+        .sort((user: any, b: any) => user.name.localeCompare(b.name));
 
 export default function Members() {
-    const { members, directusUsers } = useOutletContext<any>();
+    const { directusUsers } = useOutletContext<any>();
     const navigate = useNavigate();
-    const paidMembers = filterPaidMembers(members, directusUsers);
-    const extractedMembers = paidMembers.map(
-        (row: any) => row.properties.fullName.title[0].plain_text
-    );
+    const paidMembers = filterPaidMembers(directusUsers);
 
-    const cleanData = paidMembers.map((e: any) => ({
-        team: e.properties.Team.select?.name,
-        score: e.properties.Score.number || 0,
+    const cleanData = paidMembers.map((user: any) => ({
+        team: user.team,
+        score: user.score || 0,
     }));
 
     const scoreByTeam = cleanData.reduce((acc: any, cur: any) => {
@@ -47,20 +41,20 @@ export default function Members() {
             columns: [
                 {
                     id: "i",
-                    data: e.properties.fullName.title[0].plain_text,
+                    data: e.name,
                 },
                 {
                     id: "j",
-                    data: e.properties.Team.select?.name || "-",
+                    data: e.team || "-",
                 },
-                { id: "k", data: e.properties.Score.number || 0 },
+                { id: "k", data: e.score || 0 },
             ],
         };
     });
 
     const showProfile = (e: any) => {
         const id = e.target.outerText;
-        if (extractedMembers.find((e: any) => e === id)) {
+        if (paidMembers.find((e: any) => e.name === id)) {
             navigate(`/profile/${id}`);
         }
     };
