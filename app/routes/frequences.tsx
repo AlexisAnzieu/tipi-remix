@@ -1,4 +1,4 @@
-import { Link, useNavigate, useOutletContext } from "remix";
+import { Link } from "remix";
 import { Button, Table } from "@arwes/core";
 
 const artists = [

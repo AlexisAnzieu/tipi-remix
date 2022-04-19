@@ -7,23 +7,36 @@ export default function Index() {
     return (
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
-            <Link to="/frequences">
-                <Button FrameComponent={FrameUnderline}>
-                    Fréquences sonores
-                </Button>
-            </Link>
-            <br />
-            <Link to={`/profile/${session.name}`}>
-                <Button FrameComponent={FrameUnderline}>
-                    Carte d'identification
-                </Button>
-            </Link>
-            <br />
-            <Link to="/members">
-                <Button FrameComponent={FrameUnderline}>
-                    Liste des mercenaires
-                </Button>
-            </Link>
+            <div style={{ display: "flex" }}>
+                <div style={{ width: "50%" }}>
+                    <Link to="/frequences">
+                        <Button FrameComponent={FrameUnderline}>
+                            Fréquences sonores
+                        </Button>
+                    </Link>
+                    <br />
+                    <Link to="/members">
+                        <Button FrameComponent={FrameUnderline}>
+                            Liste des mercenaires
+                        </Button>
+                    </Link>
+                    <br />
+                    <Link to={`/profile/${session.name}`}>
+                        <Button FrameComponent={FrameUnderline}>
+                            Carte d'identification
+                        </Button>
+                    </Link>
+                </div>
+                <div style={{ width: "50%", textAlign: "right" }}>
+                    <Link to="/la-chasse">
+                        <Button FrameComponent={FrameUnderline}>
+                            la Chasse
+                        </Button>
+                    </Link>
+                    <br />
+                </div>
+            </div>
+
             <br />
             <br />
             <h5>13 Mars 2150 - 17:29:35</h5>

@@ -1,5 +1,5 @@
 import { Button, Figure, FrameUnderline, Text } from "@arwes/core";
-import { useLoaderData, useNavigate } from "remix";
+import { useLoaderData, useNavigate, useOutletContext } from "remix";
 import { directus } from "~/utils/directus";
 
 export const loader = async ({ params }: any) => {
@@ -11,6 +11,7 @@ export const loader = async ({ params }: any) => {
 
 export default function Profile() {
     const { user } = useLoaderData();
+    const { session } = useOutletContext<any>();
     const navigate = useNavigate();
 
     return (
@@ -25,6 +26,13 @@ export default function Profile() {
             >
                 Retour
             </Button>
+            {user.facebook_id === session.facebook_id && (
+                <>
+                    <h4 style={{ paddingTop: "60px" }}>Secret ID</h4>
+                    {session.facebook_id.substring(12)} - À ne dévoiler qu'en
+                    cas de défaite.
+                </>
+            )}
             <Figure
                 style={{
                     paddingTop: "50px",
