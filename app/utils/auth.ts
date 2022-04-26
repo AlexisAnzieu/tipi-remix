@@ -1,5 +1,5 @@
 const extractMembers = (table: any) => {
-    return table.map((row: any) => ({
+    return table.filter((row: any) => row.properties.fullName.title[0]).map((row: any) => ({
         name: row.properties.fullName.title[0].plain_text,
     }));
 };
