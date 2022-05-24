@@ -8,7 +8,8 @@ export let sessionStorage = createCookieSessionStorage({
         sameSite: "lax", // this helps with CSRF
         path: "/", // remember to add this so the cookie will work in all routes
         secure: process.env.NODE_ENV === "production", // enable this in prod only
-        secrets: ["thisisasecret"]
+        secrets: ["thisisasecret"],
+        expires: new Date(Date.now() + 48 * 3600 * 1000)
     },
 });
 
