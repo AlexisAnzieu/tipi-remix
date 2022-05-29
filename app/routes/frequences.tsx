@@ -3,63 +3,63 @@ import { Button, Table } from "@arwes/core";
 
 const artists = [
     {
-        name: "",
+        name: "Blondie",
         schedule: "22:00",
-        type: "",
+        type: "progressive house",
         day: "friday",
     },
     {
-        name: "",
+        name: "Moodjo",
         schedule: "23:30",
-        type: "",
+        type: "house",
         day: "friday",
     },
     {
-        name: "",
+        name: "Sound Crate",
         schedule: "01:00",
-        type: "",
+        type: "micro house",
         day: "friday",
     },
     {
-        name: "",
+        name: "Wisley",
         schedule: "02:30",
-        type: "",
+        type: "techno",
         day: "friday",
     },
     {
-        name: "",
-        schedule: "04:00",
-        type: "",
+        name: "(FR)eezer",
+        schedule: "03:30",
+        type: "mental techno",
         day: "friday",
     },
     {
-        name: "",
-        schedule: "20:00",
-        type: "",
+        name: "Perle",
+        schedule: "22:00",
+        type: "House & Funk",
         day: "saturday",
     },
     {
-        name: "",
-        schedule: "21:30",
-        type: "",
+        name: "Takümi",
+        schedule: "23:30",
+        type: "Tribal house",
         day: "saturday",
     },
     {
-        name: "",
-        schedule: "23:00",
-        type: "",
+        name: "Evita",
+        schedule: "01:00",
+        type: "Italo Disco",
         day: "saturday",
     },
     {
-        name: "",
-        schedule: "00:30",
-        type: "",
+        name: "Luce",
+        schedule: "02:30",
+        type: "techno",
         day: "saturday",
     },
     {
-        name: "",
-        schedule: "02:00",
-        type: "",
+        name: "Wisley b2b Luce",
+        schedule: "03:30",
+        type: "techno nrv",
         day: "saturday",
     },
 ];
@@ -88,14 +88,14 @@ export default function Frequences() {
             </Link>
             <br />
             <br />
-            <h3>Vendredi [22h-5h]</h3>
+            <h3>Vendredi</h3>
             <Table
                 animator={{ animate: false }}
                 headers={headers}
                 dataset={dataset("friday")}
                 columnWidths={["27%", "37%", "36%"]}
             />
-            <h3>Samedi [20h-4h]</h3>
+            <h3>Samedi</h3>
             <Table
                 animator={{ animate: false }}
                 headers={headers}
