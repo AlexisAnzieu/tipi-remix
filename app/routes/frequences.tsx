@@ -51,13 +51,13 @@ const artists = [
         day: "saturday",
     },
     {
-        name: "Luce",
+        name: "Phazme",
         schedule: "02:30",
         type: "techno",
         day: "saturday",
     },
     {
-        name: "Wisley b2b Luce",
+        name: "Wisley b2b Phazme",
         schedule: "03:30",
         type: "techno nrv",
         day: "saturday",
