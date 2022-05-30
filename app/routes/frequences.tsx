@@ -47,7 +47,7 @@ const artists = [
     {
         name: "Evita",
         schedule: "01:00",
-        type: "Italo Disco",
+        type: "Italo Trance",
         day: "saturday",
     },
     {
