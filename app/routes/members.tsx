@@ -43,10 +43,10 @@ export default function Members() {
                     id: "i",
                     data: e.name,
                 },
-                {
-                    id: "j",
-                    data: e.team || "-",
-                },
+                // {
+                //     id: "j",
+                //     data: e.team || "-",
+                // },
                 { id: "k", data: e.score || 0 },
             ],
         };
@@ -82,7 +82,7 @@ export default function Members() {
                     animator={{ animate: false }}
                     headers={[
                         { id: "a", data: "Nom" },
-                        { id: "c", data: "Équipe" },
+                        // { id: "c", data: "Équipe" },
                         { id: "b", data: "Score" },
                     ]}
                     dataset={datasetMercenaires}
