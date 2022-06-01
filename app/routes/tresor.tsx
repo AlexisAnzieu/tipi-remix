@@ -11,7 +11,7 @@ export default function Tresor() {
             </Link>
             <br />
             <br />
-            <h1>Budget</h1>
+            <h1>Trésor</h1>
             <h4>Recettes</h4>
             80$ * {users.length} mercenaires = {80 * users.length} $
             <br />
