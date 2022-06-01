@@ -8,7 +8,7 @@ export default function Index() {
         <>
             <h1>PORTAIL INTERGALACTIQUE</h1>
             <div style={{ display: "flex" }}>
-                <div style={{ width: "50%" }}>
+                <div style={{ width: "50%", textAlign: "left" }}>
                     <Link to="/frequences">
                         <Button FrameComponent={FrameUnderline}>
                             Fréquences sonores
@@ -29,8 +29,16 @@ export default function Index() {
                 </div>
                 <div style={{ width: "50%", textAlign: "right" }}>
                     <Link to="/la-chasse">
-                        <Button FrameComponent={FrameUnderline}>
-                            la Chasse
+                        <Button FrameComponent={FrameUnderline}>Chasse</Button>
+                    </Link>
+                    <br />
+                    <Link to="/tresor">
+                        <Button FrameComponent={FrameUnderline}>Trésor</Button>
+                    </Link>
+                    <br />
+                    <Link to="/logout">
+                        <Button palette="error" FrameComponent={FrameUnderline}>
+                            Déconnexion
                         </Button>
                     </Link>
                     <br />

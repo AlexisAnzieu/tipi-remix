@@ -1,10 +1,16 @@
-import { useOutletContext } from "remix";
+import { Button } from "@arwes/core";
+import { Link, useOutletContext } from "remix";
 
-export default function Budget() {
+export default function Tresor() {
     const { directusUsers } = useOutletContext<any>();
     const users = directusUsers.filter((u: any) => u.has_paid);
     return (
         <>
+            <Link to="/">
+                <Button palette="primary">Retour au portail</Button>
+            </Link>
+            <br />
+            <br />
             <h1>Budget</h1>
             <h4>Recettes</h4>
             80$ * {users.length} mercenaires = {80 * users.length} $
