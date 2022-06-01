@@ -6,6 +6,13 @@ export default function Index() {
 
     return (
         <>
+            <div style={{ textAlign: "right", paddingBottom: 10 }}>
+                <Link to="/logout">
+                    <Button palette="secondary" FrameComponent={FrameUnderline}>
+                        Déconnexion
+                    </Button>
+                </Link>
+            </div>
             <h1>PORTAIL INTERGALACTIQUE</h1>
             <div style={{ display: "flex" }}>
                 <div style={{ width: "50%", textAlign: "left" }}>
@@ -36,14 +43,8 @@ export default function Index() {
                         <Button FrameComponent={FrameUnderline}>Trésor</Button>
                     </Link>
                     <br />
-                    <Link to="/logout">
-                        <Button
-                            palette="secondary"
-                            FrameComponent={FrameUnderline}
-                        >
-                            Déconnexion
-                        </Button>
-                    </Link>
+                    <br />
+                    <br />
                     <br />
                 </div>
             </div>

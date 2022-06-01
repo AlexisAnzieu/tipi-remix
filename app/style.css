@@ -1,7 +1,11 @@
 @media screen and (min-width: 1000px) {
     body {
-        margin: 20px 30% 20px 30%;
+        margin: 0px 30% 20px 30%;
     }
+}
+
+body {
+    padding-top: 0px !important;
 }
 
 .stripe_button {
