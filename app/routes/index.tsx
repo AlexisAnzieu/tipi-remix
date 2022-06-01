@@ -37,7 +37,10 @@ export default function Index() {
                     </Link>
                     <br />
                     <Link to="/logout">
-                        <Button palette="error" FrameComponent={FrameUnderline}>
+                        <Button
+                            palette="secondary"
+                            FrameComponent={FrameUnderline}
+                        >
                             Déconnexion
                         </Button>
                     </Link>
