@@ -25,7 +25,7 @@ export default function Tresor() {
                 scrolling="no"
                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQTVM8zzxNsVSCWZR60YGANxva0CuTD5sOG3dZmEu6_Ied9FEIeU8nLdLiIo-9lG3jYGyHVe6arHo8q/pubchart?oid=381837368&amp;format=interactive"
             ></iframe>
-            Total: $4 872,24
+            Total: $5 212,24
         </>
     );
 }
