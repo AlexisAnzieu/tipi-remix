@@ -11,11 +11,11 @@ export default function Auth({ users }: any) {
     return (
         <>
             <div style={{ textAlign: "center", paddingBottom: "2em" }}>
-                <h5>{85 - users.length} PASS restants </h5>
+                <h5>{90 - users.length} PASS restants </h5>
                 <LoadingBars
                     animator={{ activate: true }}
                     determinate
-                    progress={85 - users.length}
+                    progress={90 - users.length}
                 />
             </div>
             <FrameHexagon
