@@ -1,5 +1,5 @@
 import { Link, redirect, useLoaderData, useOutletContext } from "remix";
-import { Blockquote, Button, FrameBox, Text, Figure } from "@arwes/core";
+import { Blockquote, Button, Figure, FrameBox } from "@arwes/core";
 import { directus } from "~/utils/directus";
 import { authenticator } from "~/utils/auth.server";
 
@@ -14,18 +14,28 @@ export async function action({ request }: any) {
     if (secretId === runnerId.substring(12)) {
         await directus.items("Hunt").updateOne(huntId, { status: "validated" });
 
-        const { data: takenHunt }: any = await directus
-            .items("Hunt")
-            .readByQuery({
-                filter: {
-                    hunter: runnerId,
-                },
-            });
+        try {
+            const { data: takenHunt }: any = await directus
+                .items("Hunt")
+                .readByQuery({
+                    filter: {
+                        hunter: runnerId,
+                    },
+                });
 
-        await directus.items("Hunt").updateOne(takenHunt[0].id, {
-            status: "inprogress",
-            hunter: hunterId,
-        });
+            try {
+                await directus.items("Hunt").updateOne(takenHunt[0].id, {
+                    status: "inprogress",
+                    hunter: hunterId,
+                });
+            } catch (error) {
+                throw new Error(
+                    "La personne que tu as tuée n'était liée à aucune chasse, problème d'algo déso!"
+                );
+            }
+        } catch (error) {
+            throw new Error("Tu as rentré un secret ID erroné");
+        }
 
         return redirect("/la-chasse");
     }
@@ -70,7 +80,7 @@ export const loader = async ({ request }: any) => {
 };
 
 export default function LaChasse() {
-    // const { hunt, runner } = useLoaderData();
+    const { hunt, runner } = useLoaderData();
     const { session } = useOutletContext<any>();
 
     return (
@@ -81,8 +91,7 @@ export default function LaChasse() {
             <br />
             <br />
             <h2>La Chasse</h2>
-            La chasse n'est pas encore ouverte!
-            {/* {!hunt && (
+            {!hunt && (
                 <>
                     Tu as été éliminé (mais tu peux toujours potentiellement te
                     faire chasser). Tu n'es plus autorisé à aider ton équipe non
@@ -114,6 +123,8 @@ export default function LaChasse() {
                     <Figure src={runner.picture} alt="A nebula" />
                     Tu as démasqué ton chasseur ou tu as accompli ton objectif ?
                     Entre le secretID ici:
+                    <br />
+                    <br />
                     <form method="post" action="/la-chasse">
                         <div style={{ display: "flex" }}>
                             <input
@@ -140,14 +151,12 @@ export default function LaChasse() {
                     <br />
                     <br />
                     <Blockquote palette="secondary">
-                        <Text>
-                            Attention, il y a déjà un mercenaire à ta recherche!
-                            De plus, n'oublie pas que tu peux chasser en meute
-                            avec ton équipe...
-                        </Text>
+                        Attention, il y a déjà un mercenaire à ta recherche! De
+                        plus, n'oublie pas que tu peux chasser en meute avec ton
+                        équipe...
                     </Blockquote>
                 </>
-            )} */}
+            )}
             <br />
             <br />
             <h6>Ton secret ID: {session.facebook_id.substring(12)}</h6>

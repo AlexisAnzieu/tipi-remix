@@ -35,13 +35,13 @@ export default function Index() {
                     </Link>
                 </div>
                 <div style={{ width: "50%", textAlign: "right" }}>
-                    <Link to="/la-chasse">
+                    {/* <Link to="/la-chasse">
                         <Button FrameComponent={FrameUnderline}>Chasse</Button>
                     </Link>
                     <br />
                     <Link to="/tresor">
                         <Button FrameComponent={FrameUnderline}>Trésor</Button>
-                    </Link>
+                    </Link> */}
                     <br />
                     <br />
                     <br />
