@@ -35,13 +35,9 @@ export default function Index() {
                     </Link>
                 </div>
                 <div style={{ width: "50%", textAlign: "right" }}>
-                    {/* <Link to="/la-chasse">
-                        <Button FrameComponent={FrameUnderline}>Chasse</Button>
-                    </Link>
-                    <br />
                     <Link to="/tresor">
                         <Button FrameComponent={FrameUnderline}>Trésor</Button>
-                    </Link> */}
+                    </Link>
                     <br />
                     <br />
                     <br />
@@ -76,9 +72,9 @@ export default function Index() {
                 >
                     La liste définitive des mercenaires est fixée!{" "}
                     {directusUsers.filter((u: any) => u.has_paid).length}{" "}
-                    téméraires subdivisés en 10 équipes de 8 mercenaires vont se
-                    confronter afin de découvrir les secrets de la montagne. La
-                    liste des équipements à prendre est la suivante:
+                    téméraires subdivisés en 10 équipes vont se confronter afin
+                    de découvrir les secrets de la montagne. La liste des
+                    équipements à prendre est la suivante:
                     <lu>
                         <li>lampe frontale</li>
                         <li>nourriture</li>
