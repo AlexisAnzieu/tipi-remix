@@ -51,6 +51,46 @@ export default function Index() {
 
             <br />
             <br />
+            <h5>6 Juin 2150 - 11:00:23</h5>
+            <FrameHexagon
+                animator={{
+                    duration: {
+                        enter: 1000,
+                    },
+                    activate: true,
+                }}
+                hover
+            >
+                <Text
+                    animator={{
+                        duration: {
+                            enter: 5000,
+                            exit: 1000,
+                        },
+                        activate: true,
+                    }}
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
+                    La liste définitive des mercenaires est fixée! 80 téméraires
+                    subdivisés en 10 équipes de 8 mercenaires vont se confronter
+                    afin de découvrir les secrets de la montagne. La liste des
+                    équipements à prendre est la suivante:
+                    <lu>
+                        <li>lampe frontale</li>
+                        <li>nourriture</li>
+                        <li>breuvage</li>
+                        <li>glacière</li>
+                        <li>parures</li>
+                        <li>tente</li>
+                        <li>eau</li>
+                    </lu>
+                </Text>
+            </FrameHexagon>
+            <br />
+            <br />
             <h5>13 Mars 2150 - 17:29:35</h5>
             <FrameHexagon
                 animator={{
