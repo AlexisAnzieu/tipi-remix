@@ -2,7 +2,7 @@ import { Text, FrameHexagon, Button, FrameUnderline } from "@arwes/core";
 import { Link, useOutletContext } from "remix";
 
 export default function Index() {
-    const { session } = useOutletContext<any>();
+    const { session, directusUsers } = useOutletContext<any>();
 
     return (
         <>
@@ -39,9 +39,9 @@ export default function Index() {
                         <Button FrameComponent={FrameUnderline}>Chasse</Button>
                     </Link>
                     <br />
-                    {/* <Link to="/tresor">
+                    <Link to="/tresor">
                         <Button FrameComponent={FrameUnderline}>Trésor</Button>
-                    </Link> */}
+                    </Link>
                     <br />
                     <br />
                     <br />
@@ -74,10 +74,11 @@ export default function Index() {
                         height: "100%",
                     }}
                 >
-                    La liste définitive des mercenaires est fixée! 80 téméraires
-                    subdivisés en 10 équipes de 8 mercenaires vont se confronter
-                    afin de découvrir les secrets de la montagne. La liste des
-                    équipements à prendre est la suivante:
+                    La liste définitive des mercenaires est fixée!{" "}
+                    {directusUsers.filter((u: any) => u.has_paid).length}{" "}
+                    téméraires subdivisés en 10 équipes de 8 mercenaires vont se
+                    confronter afin de découvrir les secrets de la montagne. La
+                    liste des équipements à prendre est la suivante:
                     <lu>
                         <li>lampe frontale</li>
                         <li>nourriture</li>
