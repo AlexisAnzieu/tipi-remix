@@ -26,13 +26,6 @@ export default function Profile() {
             >
                 Retour
             </Button>
-            {user.facebook_id === session.facebook_id && (
-                <>
-                    <h4 style={{ paddingTop: "60px" }}>Secret ID</h4>
-                    {session.facebook_id.substring(12)} - À ne dévoiler qu'en
-                    cas de défaite.
-                </>
-            )}
             <Figure
                 style={{
                     paddingTop: "50px",
