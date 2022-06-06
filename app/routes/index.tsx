@@ -39,9 +39,9 @@ export default function Index() {
                         <Button FrameComponent={FrameUnderline}>Chasse</Button>
                     </Link>
                     <br />
-                    <Link to="/tresor">
+                    {/* <Link to="/tresor">
                         <Button FrameComponent={FrameUnderline}>Trésor</Button>
-                    </Link>
+                    </Link> */}
                     <br />
                     <br />
                     <br />
