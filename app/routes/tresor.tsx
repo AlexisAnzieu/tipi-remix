@@ -63,6 +63,7 @@ export default function Tresor() {
             </Link>
             <br />
             <br />
+            <h1>Trésor de la pieuvre</h1>
             {number && (
                 <>
                     <h2>{number}</h2>

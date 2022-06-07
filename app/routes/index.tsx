@@ -41,7 +41,7 @@ export default function Index() {
                         </Button>
                     </Link>
                     <br />
-                    <Link to="/vote">
+                    <Link to="/hunterxrunner">
                         <Button FrameComponent={FrameUnderline}>
                             Hunter X Runner
                         </Button>
