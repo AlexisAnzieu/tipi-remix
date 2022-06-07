@@ -17,7 +17,7 @@ const artists = [
     {
         name: "Sound Crate",
         schedule: "01:00",
-        type: "micro house",
+        type: "Minimal & Breaks",
         day: "friday",
     },
     {
