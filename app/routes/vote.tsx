@@ -85,6 +85,13 @@ export default function Vote() {
         });
     }
 
+    const showProfile = (e: any) => {
+        const id = e.target.outerText;
+        if (directusUsers.find((e: any) => e.name === id)) {
+            navigate(`/profile/${id}`);
+        }
+    };
+
     return (
         <>
             <Link to="/">
@@ -104,15 +111,17 @@ export default function Vote() {
                     <br />
                     <br />
                     <h4>Résultats en direct</h4>
-                    <Table
-                        animator={{ animate: false }}
-                        headers={[
-                            { id: "e", data: "Name" },
-                            { id: "d", data: "#" },
-                        ]}
-                        dataset={datasetResult}
-                        columnWidths={["50%", "50%"]}
-                    />
+                    <div onClick={showProfile}>
+                        <Table
+                            animator={{ animate: false }}
+                            headers={[
+                                { id: "e", data: "Name" },
+                                { id: "d", data: "#" },
+                            ]}
+                            dataset={datasetResult}
+                            columnWidths={["50%", "50%"]}
+                        />
+                    </div>
                 </>
             )}
             {!session.elected && (
