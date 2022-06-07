@@ -43,10 +43,10 @@ export default function Members() {
                     id: "i",
                     data: e.name,
                 },
-                {
-                    id: "j",
-                    data: e.team || "-",
-                },
+                // {
+                //     id: "j",
+                //     data: e.team || "-",
+                // },
                 { id: "k", data: e.score || 0 },
             ],
         };
@@ -74,7 +74,7 @@ export default function Members() {
             <br />
             <br />
             <h1>Équipes</h1>
-            <Table
+            {/* <Table
                 animator={{ animate: false }}
                 headers={[
                     { id: "e", data: "Équipe" },
@@ -82,14 +82,14 @@ export default function Members() {
                 ]}
                 dataset={datasetTeams}
                 columnWidths={["50%", "50%"]}
-            />
+            /> */}
             <h1>Mercenaires</h1>
             <div onClick={showProfile}>
                 <Table
                     animator={{ animate: false }}
                     headers={[
                         { id: "a", data: "Nom" },
-                        { id: "c", data: "Équipe" },
+                        // { id: "c", data: "Équipe" },
                         { id: "b", data: "Tipiz" },
                     ]}
                     dataset={datasetMercenaires}

@@ -2,16 +2,16 @@ import { LoaderFunction } from "remix";
 import { directus } from "~/utils/directus";
 
 const teams = [
-    "bleu",
-    "verte",
-    "jaune",
-    "blanche",
-    "rouge",
-    "violette",
-    "orange",
-    "noire",
-    "grise",
-    "rose",
+    "Comet Kids",
+    "Solar Space Cadets",
+    "Astronaut Divas",
+    "Saturn Rangers",
+    "Angels of Venus",
+    "Galaxy Goons",
+    "Jupiter Jedi",
+    "Mars All-Stars",
+    "Moon Patrols",
+    "Planet Mush",
 ];
 
 const shuffleArray = (users: any[]): string[] => {
