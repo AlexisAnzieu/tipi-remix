@@ -24,8 +24,8 @@ const enigme: Record<number | string, string> = {
     coqp: "3: Quand c'est petit c'est minus****",
     pieuvrette:
         "Aussitôt que tu as chuchotté son nom, cette dernière sort des fourrages et te supplie de l'aider à retourner sur sa planète. Malheureusement elle ne sait plus où elle habite car elle n'a plus toute sa tête...",
-    8463: "'Ah! C'est bon!' s'exclama Pieuvrette. 'Je viens de la planète Linotte et j'étais venu ici pour cueillir des soucoupes. J'en ai trouvé 13. Peux-tu vérifier si c'est toujours le cas?' (indice: il faut entrer le chiffre en lettre ci-dessous)",
-    6743: "'En effet... J'ai bien une tête de Linotte!' s'écria t-elle juste avant de s'envoler dans sa fusée argentée",
+    8463: "'Ah! C'est bon!' s'exclama Pieuvrette. 'Je viens de la planète Linotte et j'étais venu ici pour cueillir des soucoupes. J'en ai trouvé 9. Peux-tu vérifier si c'est toujours le cas?' (indice: il faut entrer le chiffre en lettre ci-dessous)",
+    huit: "'En effet... J'ai bien une tête de Linotte!' s'écria t-elle juste avant de s'envoler dans sa fusée argentée",
     9232: "Tu la regardes partir au loin... Te demandant quel crétin de l'orga avait bien pu faire un scénario avec une pieuvre spatiale dôtée de cordes vocales.",
 };
 

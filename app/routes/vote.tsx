@@ -1,4 +1,4 @@
-import { Button, FrameBox, FrameCorners, Text } from "@arwes/core";
+import { Button, FrameBox, FrameCorners, Table, Text } from "@arwes/core";
 import { Link, redirect, useNavigate, useOutletContext } from "remix";
 import { directus } from "~/utils/directus";
 import { commitSession, getSession } from "~/utils/session.server";
@@ -47,6 +47,43 @@ export async function action({ request }: any) {
 export default function Vote() {
     const navigate = useNavigate();
     const { directusUsers, session } = useOutletContext<any>();
+    let datasetResult: any;
+
+    if (session.elected) {
+        const results = directusUsers.reduce(
+            (acc: any, cur: any) => ({
+                ...acc,
+                [cur.elected]: ++acc[cur.elected] || 1,
+            }),
+            {}
+        );
+
+        const clean = Object.keys(results)
+            .map((key) => ({
+                name: directusUsers.find(
+                    (user: any) => user.facebook_id === key
+                )?.name,
+                count: results[key],
+            }))
+            .filter((e: any) => e.name)
+            .sort((a: any, b: any) => b.count - a.count);
+
+        datasetResult = clean.map((e: any, index: any) => {
+            return {
+                id: index,
+                columns: [
+                    {
+                        id: "i",
+                        data: e.name,
+                    },
+                    {
+                        id: "j",
+                        data: e.count || "-",
+                    },
+                ],
+            };
+        });
+    }
 
     return (
         <>
@@ -64,6 +101,18 @@ export default function Vote() {
                             (u: any) => u.facebook_id === session.elected
                         )[0].name
                     }
+                    <br />
+                    <br />
+                    <h4>Résultats en direct</h4>
+                    <Table
+                        animator={{ animate: false }}
+                        headers={[
+                            { id: "e", data: "Name" },
+                            { id: "d", data: "#" },
+                        ]}
+                        dataset={datasetResult}
+                        columnWidths={["50%", "50%"]}
+                    />
                 </>
             )}
             {!session.elected && (
