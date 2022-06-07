@@ -46,7 +46,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
 
     return {
-        enigme: enigme[number] || null,
+        enigme:
+            enigme[number] || "Ces caractères ne correspondent à aucun indice.",
         number,
     };
 };
@@ -62,7 +63,7 @@ export default function Tresor() {
             </Link>
             <br />
             <br />
-            {enigme && (
+            {number && (
                 <>
                     <h2>{number}</h2>
                     <FrameHexagon
@@ -104,7 +105,7 @@ export default function Tresor() {
                         Entre ici l'indice
                         <input id="tresorId" name="tresorId" type="text" />
                         <Button type="submit" FrameComponent={FrameBox}>
-                            Envoyer
+                            Valider
                         </Button>
                     </div>
                 </form>

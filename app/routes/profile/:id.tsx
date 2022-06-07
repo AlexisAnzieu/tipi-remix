@@ -11,7 +11,6 @@ export const loader = async ({ params }: any) => {
 
 export default function Profile() {
     const { user } = useLoaderData();
-    const { session } = useOutletContext<any>();
     const navigate = useNavigate();
 
     return (
@@ -26,6 +25,9 @@ export default function Profile() {
             >
                 Retour
             </Button>
+            <h4 style={{ paddingTop: "60px" }}>
+                No d'identification #{user.facebook_id.slice(-5)}
+            </h4>
             <Figure
                 style={{
                     paddingTop: "50px",

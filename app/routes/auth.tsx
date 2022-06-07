@@ -71,11 +71,11 @@ export default function Auth({ users }: any) {
                         FrameComponent={FrameCorners}
                         animator={{ activate: true }}
                     >
-                        <Text>par Facebook - Recommandé</Text>
+                        <Text>Se connecter avec Facebook</Text>
                     </Button>
                 </Form>
             </div>
-            <div
+            {/* <div
                 style={{
                     marginTop: "15px",
                     textAlign: "center",
@@ -89,7 +89,7 @@ export default function Auth({ users }: any) {
                         <Text>par Google - en test</Text>
                     </Button>
                 </Form>
-            </div>
+            </div> */}
         </>
     );
 }

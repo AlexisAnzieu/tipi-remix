@@ -36,11 +36,22 @@ export default function Index() {
                 </div>
                 <div style={{ width: "50%", textAlign: "right" }}>
                     <Link to="/tresor">
-                        <Button FrameComponent={FrameUnderline}>Trésor</Button>
+                        <Button FrameComponent={FrameUnderline}>
+                            Trésor de la pieuvre
+                        </Button>
                     </Link>
                     <br />
+                    <Link to="/vote">
+                        <Button FrameComponent={FrameUnderline}>
+                            Hunter X Runner
+                        </Button>
+                    </Link>
                     <br />
-                    <br />
+                    <Link to="/vote">
+                        <Button FrameComponent={FrameUnderline}>
+                            Vote stellaire
+                        </Button>
+                    </Link>
                     <br />
                 </div>
             </div>

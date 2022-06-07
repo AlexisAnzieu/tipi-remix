@@ -1,5 +1,5 @@
 import { Link, useNavigate, useOutletContext } from "remix";
-import { Button, Table } from "@arwes/core";
+import { Button, FrameUnderline, Table } from "@arwes/core";
 
 const filterPaidMembers = (users: any) =>
     users
@@ -61,9 +61,16 @@ export default function Members() {
 
     return (
         <>
-            <Link to="/">
-                <Button palette="primary">Retour au portail</Button>
-            </Link>
+            <Button
+                onClick={() => {
+                    const hasHistory = window.history.length > 2;
+                    hasHistory ? navigate(-1) : navigate("/");
+                }}
+                FrameComponent={FrameUnderline}
+                palette="primary"
+            >
+                Retour
+            </Button>
             <br />
             <br />
             <h1>Équipes</h1>
@@ -71,7 +78,7 @@ export default function Members() {
                 animator={{ animate: false }}
                 headers={[
                     { id: "e", data: "Équipe" },
-                    { id: "d", data: "Score" },
+                    { id: "d", data: "Tipiz" },
                 ]}
                 dataset={datasetTeams}
                 columnWidths={["50%", "50%"]}
@@ -83,7 +90,7 @@ export default function Members() {
                     headers={[
                         { id: "a", data: "Nom" },
                         { id: "c", data: "Équipe" },
-                        { id: "b", data: "Score" },
+                        { id: "b", data: "Tipiz" },
                     ]}
                     dataset={datasetMercenaires}
                     columnWidths={["40%", "35%", "25%"]}
