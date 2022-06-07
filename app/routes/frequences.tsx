@@ -29,7 +29,7 @@ const artists = [
     {
         name: "(FR)eezer",
         schedule: "03:30",
-        type: "to the sunrise dj set",
+        type: "'to the sunrise' dj set",
         day: "friday",
     },
     {
