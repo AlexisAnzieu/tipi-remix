@@ -20,11 +20,15 @@ export async function action({ request }: any) {
         user.facebook_id.slice(-6).includes(userId)
     );
 
-    await directus
-        .items("tipi_users")
-        .updateOne(session.data._session.facebook_id, {
-            elected: electedUser?.[0].facebook_id,
-        });
+    try {
+        await directus
+            .items("tipi_users")
+            .updateOne(session.data._session.facebook_id, {
+                elected: electedUser?.[0].facebook_id,
+            });
+    } catch (error) {
+        return redirect("/vote");
+    }
 
     const newSession = {
         ...session,
