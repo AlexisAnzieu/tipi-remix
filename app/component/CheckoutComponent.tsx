@@ -24,7 +24,10 @@ export const CheckoutComponent = ({ session }: any): JSX.Element => {
     }, []);
     return (
         <>
-            <Blockquote palette="primary">
+            <Blockquote palette="error">
+                <Text>Nouvelles inscriptions impossibles.</Text>
+            </Blockquote>
+            {/* <Blockquote palette="primary">
                 <Text>
                     {`${session.name} figure bien sur notre liste des mercenaires mais les frais n'ont pas encore été acquittés. Pour ce faire, veuillez payer les 80$ de frais d'inscription.`}
                     <br /> <br />
@@ -33,8 +36,8 @@ export const CheckoutComponent = ({ session }: any): JSX.Element => {
                         veuillez contacter l'administrateur système planétaire.
                     </a>
                 </Text>
-            </Blockquote>
-            <div className="App">
+            </Blockquote> */}
+            {/* <div className="App">
                 {clientSecret && (
                     <Elements
                         options={options}
@@ -45,7 +48,7 @@ export const CheckoutComponent = ({ session }: any): JSX.Element => {
                         <CheckoutFormComponent session={session} />
                     </Elements>
                 )}
-            </div>
+            </div> */}
         </>
     );
 };

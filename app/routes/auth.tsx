@@ -10,58 +10,39 @@ import { Form } from "remix";
 export default function Auth({ users }: any) {
     return (
         <>
-            <div style={{ textAlign: "center", paddingBottom: "2em" }}>
-                <h5>{90 - users.length} PASS restants </h5>
-                <LoadingBars
-                    animator={{ activate: true }}
-                    determinate
-                    progress={90 - users.length}
-                />
-            </div>
-            <FrameHexagon
-                animator={{
-                    duration: {
-                        enter: 1000,
-                    },
-                    activate: true,
-                }}
-                hover
-            >
-                <Text
+            <center>
+                <FrameHexagon
                     animator={{
                         duration: {
                             enter: 1000,
-                            exit: 1000,
                         },
                         activate: true,
                     }}
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                    }}
+                    hover
                 >
-                    Vous devez être un membre de la communauté galactique pour
-                    pouvoir devenir mercenaire. Si vous n'avez pas accès à
-                    <a href="https://www.facebook.com/events/688738495481100">
-                        {" "}
-                        cet événement{" "}
-                    </a>
-                    cela signifie que vous n'en faites malheureusement pas
-                    partie.
-                </Text>
-            </FrameHexagon>
-
+                    <Text
+                        animator={{
+                            duration: {
+                                enter: 1000,
+                                exit: 1000,
+                            },
+                            activate: true,
+                        }}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    >
+                        L'inscription à la liste des mercenaires est maintenant
+                        clôturée.
+                    </Text>
+                </FrameHexagon>
+            </center>
+            <br />
+            <br />
             <div
                 style={{
-                    textAlign: "center",
-                    fontSize: "1.4em",
-                    marginTop: "50px",
-                }}
-            >
-                Devenir mercenaire{" "}
-            </div>
-            <div
-                style={{
+                    fontSize: 30,
                     marginTop: "15px",
                     textAlign: "center",
                 }}
@@ -71,7 +52,7 @@ export default function Auth({ users }: any) {
                         FrameComponent={FrameCorners}
                         animator={{ activate: true }}
                     >
-                        <Text>Se connecter avec Facebook</Text>
+                        <Text>Se connecter au portail intergalactique</Text>
                     </Button>
                 </Form>
             </div>
