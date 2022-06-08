@@ -55,7 +55,9 @@ export function links() {
 export const loader = async ({ request }: any) => {
     const { data: directusUsers } = await directus
         .items("tipi_users")
-        .readByQuery();
+        .readByQuery({
+            limit: 200,
+        });
     const session = await authenticator.isAuthenticated(request);
     const members = await getMembers();
     return {
