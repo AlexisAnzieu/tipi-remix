@@ -11,6 +11,7 @@ export async function action({ request }: any) {
     const { data: directusUsers } = await directus
         .items("tipi_users")
         .readByQuery({
+            limit: 200,
             filter: {
                 has_paid: true,
             },

@@ -29,6 +29,7 @@ export let loader: LoaderFunction = async () => {
     const { data: directusUsers } = await directus
         .items("tipi_users")
         .readByQuery({
+            limit: 200,
             filter: {
                 has_paid: true,
             },
