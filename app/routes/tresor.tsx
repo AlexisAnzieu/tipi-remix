@@ -16,22 +16,22 @@ const enigme: Record<number | string, string> = {
     <br> <br> Mais voilà que sitôt détaché il s'échappe. Il devait être assoiffé... Si nous arrivions à déterminer de quel liquide un cheval mécanique s'hydrate nous pourrions peut-être le retrouver... (indice: 2.20$ en ce moment)`,
     9345: "Le cheval est bien ici ! Mais quel boucan ! À quoi sert donc cette machine infernale ? Suivons ce cable bleu jusqu'à trouver un indice",
     9111: "Hmm c'est le bon cable  mais ce n'est pas un vrai indice. Continuons à chercher !",
-    9323: "Grrr toujours le bon cable, mais ce n'est toujours pas un indice. Quelle frustration !",
+    9323: "Grrr toujours le bon cable, mais ce n'est toujours pas un indice. Quelle frustration ! Ne nous laissons pas abattre, continuons !",
     9735: "Enfin ! Il semblerait que ce cable alimente un puissant moteur de sociabilité permettant aux humains de se retrouver et rire ensemble. Essayons d'inverser sa couleur pour voir ce que cela donne... (indice: tu peux aussi entrer des lettres ci-dessous)",
-    UELB: "Enfer et damnation ! Voici que nous avons déclenché une perturbation cosmique. Le moteur social est maintenant confronté à son pire ennemi de toujours, l'envie pressante d'aller aux toilettes galactiques ! Il y a en a trois sur le site, observons les toutes afin de déterminer laquelle est la plus plaisante!",
+    UELB: "Enfer et damnation ! Voici que nous avons déclenché une perturbation cosmique. Le moteur social est maintenant confronté à son pire ennemi de toujours, l'envie pressante d'aller aux toilettes galactiques ! Il y a en a trois sur le site, observons les toutes afin de déterminer laquelle est la plus plaisante !",
     PIIP: "1: Tu dors dedans ce soir",
     CCAA: "2: Préposition la plus connue",
     COQP: "3: Quand c'est petit c'est minus****",
-    PIEUVR: "Aussitôt que tu as chuchotté son nom, cette dernière sort des fourrages et te supplie de l'aider à retourner sur sa planète. Malheureusement elle ne sait plus où elle habite car elle n'a plus toute sa tête...",
-    8463: "'Ah! C'est bon!' s'exclama Pieuvrette. 'Je viens de la planète Linotte et j'étais venu ici pour cueillir des soucoupes. J'en ai trouvé 9. Peux-tu vérifier si c'est toujours le cas?' (indice: il faut entrer le chiffre en lettre ci-dessous)",
-    HUIT: "'En effet... J'ai bien une tête de Linotte!' s'écria t-elle juste avant de s'envoler dans sa fusée argentée",
-    373: "Tu la regardes partir au loin... Te demandant quel crétin de l'orga avait bien pu faire un scénario avec une pieuvre astronaute dôtée de cordes vocales.",
+    PIEUVR: "Aussitôt que tu as chuchotté son nom, ce dernier sort des fourrages et te supplie de l'aider à retourner sur sa planète. Malheureusement, il ne sait plus où il habite car il n'a plus toute sa tête...",
+    8463: "'Ah! C'est bon!' s'exclama Pieuvr. 'Je viens de la planète Linotte et j'étais venu ici pour cueillir des soucoupes. J'en ai trouvé 9. Peux-tu vérifier si c'est toujours le cas?' (indice: il faut entrer le chiffre en lettre ci-dessous)",
+    HUIT: "'En effet... J'ai bien une tête de Linotte!' s'écria t-il juste avant de s'envoler dans sa fusée argentée",
+    373: "Tu le regardes partir au loin... Te demandant quel crétin de l'orga avait bien pu faire un scénario avec une pieuvre astronaute dôtée de cordes vocales.",
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
     const number = request.url?.split("?")[1]?.split("=")[1];
 
-    if (number === `${9232}`) {
+    if (number === `${373}`) {
         const session: any = await authenticator.isAuthenticated(request);
         const userId = session.facebook_id;
         const user: any = await directus.items("tipi_users").readOne(userId);
