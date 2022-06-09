@@ -53,7 +53,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function Tresor() {
     const { enigme, number } = useLoaderData();
-    const lastEnigme = number === "9232";
+    const lastEnigme = number === "373";
 
     return (
         <>
