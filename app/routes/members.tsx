@@ -25,15 +25,16 @@ export default function Members() {
         return acc;
     }, {});
 
-    const datasetTeams = Object.entries(scoreByTeam).map(
-        (e: any, index: any) => ({
+    console.log(Object.entries(scoreByTeam));
+    const datasetTeams = Object.entries(scoreByTeam)
+        .sort((a: any, b: any) => b[1] - a[1])
+        .map((e: any, index: any) => ({
             id: index,
             columns: [
                 { id: "g", data: e[0] },
                 { id: "h", data: e[1] },
             ],
-        })
-    );
+        }));
 
     const datasetMercenaires = paidMembers.map((e: any, index: any) => {
         return {
