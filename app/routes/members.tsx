@@ -25,7 +25,6 @@ export default function Members() {
         return acc;
     }, {});
 
-    console.log(Object.entries(scoreByTeam));
     const datasetTeams = Object.entries(scoreByTeam)
         .sort((a: any, b: any) => b[1] - a[1])
         .map((e: any, index: any) => ({
