@@ -52,7 +52,7 @@ export default function Auth({ users }: any) {
                         FrameComponent={FrameCorners}
                         animator={{ activate: true }}
                     >
-                        <Text>Se connecter au portail intergalactique</Text>
+                        <Text>Se connecter à Facebook</Text>
                     </Button>
                 </Form>
             </div>
