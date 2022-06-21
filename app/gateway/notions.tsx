@@ -22,10 +22,6 @@ export const getMembers = async () => {
         start_cursor: res1.next_cursor as string,
         sorts: [
             {
-                property: "Score",
-                direction: "descending",
-            },
-            {
                 property: "fullName",
                 direction: "ascending",
             },
