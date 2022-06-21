@@ -11,10 +11,6 @@ export const getMembers = async () => {
         database_id: databaseId,
         sorts: [
             {
-                property: "Score",
-                direction: "descending",
-            },
-            {
                 property: "fullName",
                 direction: "ascending",
             },
