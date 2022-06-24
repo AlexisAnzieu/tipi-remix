@@ -6,13 +6,14 @@ const extractMembers = (table: any) => {
 
 export const setUserPermissionType = (
     session: any | null,
-    members: any
+    members?: any
 ): "NONE" | "INVALID_MEMBER" | "MEMBER_NO_PAID" | "MEMBER_PAID" => {
-    const extractedMembers: { name: string }[] = extractMembers(members);
     if (!session) {
         return "NONE";
     }
+    return "MEMBER_PAID";
     const fullName = session.name;
+    const extractedMembers: { name: string }[] = extractMembers(members);
     const found = extractedMembers.find((element) => element.name === fullName);
     if (!found) {
         return "INVALID_MEMBER";

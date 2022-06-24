@@ -18,7 +18,6 @@ import {
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
 import Auth from "./routes/auth";
-import { getMembers } from "./gateway/notions";
 import { authenticator } from "./utils/auth.server";
 
 import { CheckoutComponent } from "./component/CheckoutComponent";
@@ -59,9 +58,8 @@ export const loader = async ({ request }: any) => {
             limit: 200,
         });
     const session = await authenticator.isAuthenticated(request);
-    const members = await getMembers();
+    console.log(session);
     return {
-        members,
         session,
         directusUsers,
         ENV: {
@@ -72,8 +70,8 @@ export const loader = async ({ request }: any) => {
 };
 
 export default function App() {
-    const { members, session, ENV, directusUsers } = useLoaderData();
-    let userPermissionType = setUserPermissionType(session, members);
+    const { session, ENV, directusUsers } = useLoaderData();
+    let userPermissionType = setUserPermissionType(session);
 
     return (
         <html lang="en">
@@ -134,9 +132,7 @@ export default function App() {
                         )}
 
                         {userPermissionType === "MEMBER_PAID" && (
-                            <Outlet
-                                context={{ members, session, directusUsers }}
-                            />
+                            <Outlet context={{ session, directusUsers }} />
                         )}
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
