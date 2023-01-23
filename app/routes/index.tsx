@@ -41,11 +41,11 @@ export default function Index() {
                         </Button>
                     </Link>
                     <br />
-                    <Link to="/hunterxrunner">
+                    {/* <Link to="/hunterxrunner">
                         <Button FrameComponent={FrameUnderline}>
                             Hunter X Runner
                         </Button>
-                    </Link>
+                    </Link> */}
                     <br />
                     <Link to="/vote">
                         <Button FrameComponent={FrameUnderline}>
