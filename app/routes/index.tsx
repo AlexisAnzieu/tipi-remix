@@ -34,30 +34,42 @@ export default function Index() {
                         </Button>
                     </Link>
                 </div>
-                <div style={{ width: "50%", textAlign: "right" }}>
-                    <Link to="/tresor">
-                        <Button FrameComponent={FrameUnderline}>
-                            Trésor de la pieuvre
-                        </Button>
-                    </Link>
-                    <br />
-                    {/* <Link to="/hunterxrunner">
-                        <Button FrameComponent={FrameUnderline}>
-                            Hunter X Runner
-                        </Button>
-                    </Link> */}
-                    <br />
-                    <Link to="/vote">
-                        <Button FrameComponent={FrameUnderline}>
-                            Vote stellaire
-                        </Button>
-                    </Link>
-                    <br />
-                </div>
             </div>
-
             <br />
             <br />
+            <h3>La trilogie du TIPI</h3>
+            <h5>31 Janvier 2151 - 10:09:13</h5>
+            <FrameHexagon
+                animator={{
+                    duration: {
+                        enter: 1000,
+                    },
+                    activate: true,
+                }}
+                hover
+            >
+                <Text
+                    animator={{
+                        duration: {
+                            enter: 5000,
+                            exit: 1000,
+                        },
+                        activate: true,
+                    }}
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
+                    Un an s'est écoulé depuis que la comète Normand1LX32 s’est
+                    écrasée en Lanaudière, l'équipe de scientifiques s'est
+                    maintenant organisé en différentes équipes afin d'organiser
+                    ce nouveau village.
+                </Text>
+            </FrameHexagon>
+            <br />
+            <br />
+            <h3>TIPI FESTIVAL DEUX</h3>
             <h5>6 Juin 2150 - 11:00:23</h5>
             <FrameHexagon
                 animator={{
