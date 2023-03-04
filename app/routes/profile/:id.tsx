@@ -1,5 +1,5 @@
 import { Button, Figure, FrameUnderline, Text } from "@arwes/core";
-import { useLoaderData, useNavigate, useOutletContext } from "remix";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import { directus } from "~/utils/directus";
 
 export const loader = async ({ params }: any) => {

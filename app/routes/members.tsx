@@ -1,4 +1,4 @@
-import { Link, useNavigate, useOutletContext } from "remix";
+import { Link, useNavigate, useOutletContext } from "@remix-run/react";
 import { Button, FrameUnderline, Table } from "@arwes/core";
 
 const filterPaidMembers = (users: any) =>
