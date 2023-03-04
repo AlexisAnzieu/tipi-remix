@@ -4,5 +4,11 @@
             "ENABLE_FILE_SYSTEM_API": "1",
             "WEBSITE_URL": "https://tipi-festival.com/"
         }
-    }
+    },
+    "crons": [
+        {
+            "path": "/api/cron/fetchPayement",
+            "schedule": "42 12 * * *"
+        }
+    ]
 }

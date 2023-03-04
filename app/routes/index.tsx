@@ -2,17 +2,8 @@ import { Text, FrameHexagon, Button, FrameUnderline } from "@arwes/core";
 import { Link, useOutletContext } from "remix";
 
 export default function Index() {
-    const { session, directusUsers } = useOutletContext<any>();
-
     return (
         <>
-            <div style={{ textAlign: "right", paddingBottom: 10 }}>
-                <Link to="/logout">
-                    <Button palette="secondary" FrameComponent={FrameUnderline}>
-                        Déconnexion
-                    </Button>
-                </Link>
-            </div>
             <h1>PORTAIL INTERGALACTIQUE</h1>
             <div style={{ display: "flex" }}>
                 <div style={{ width: "50%", textAlign: "left" }}>
@@ -22,22 +13,12 @@ export default function Index() {
                         </Button>
                     </Link>
                     <br />
-                    <Link to="/members">
-                        <Button FrameComponent={FrameUnderline}>
-                            Liste des mercenaires
-                        </Button>
-                    </Link>
                     <br />
-                    <Link to={`/profile/${session.name}`}>
-                        <Button FrameComponent={FrameUnderline}>
-                            Carte d'identification
-                        </Button>
-                    </Link>
                 </div>
             </div>
             <br />
             <br />
-            <h3>La trilogie du TIPI</h3>
+            <h3>REVE.S DE TIPI</h3>
             <h5>31 Janvier 2151 - 10:09:13</h5>
             <FrameHexagon
                 animator={{
@@ -93,10 +74,9 @@ export default function Index() {
                         height: "100%",
                     }}
                 >
-                    La liste définitive des mercenaires est fixée!{" "}
-                    {directusUsers.filter((u: any) => u.has_paid).length}{" "}
-                    téméraires subdivisés en 10 équipes vont se confronter afin
-                    de découvrir les secrets de la montagne. La liste des
+                    La liste définitive des mercenaires est fixée! 86 téméraires
+                    subdivisés en 10 équipes vont se confronter afin de
+                    découvrir les secrets de la montagne. La liste des
                     équipements à prendre est la suivante:
                     <lu>
                         <li>lampe frontale</li>

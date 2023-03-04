@@ -96,44 +96,7 @@ export default function App() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        {userPermissionType === "NONE" && (
-                            <Auth
-                                users={directusUsers.filter(
-                                    (u: any) => u.has_paid
-                                )}
-                            />
-                        )}
-
-                        {userPermissionType === "INVALID_MEMBER" && (
-                            <>
-                                <Blockquote palette="error">
-                                    <Text>
-                                        {session.name} ne correspond à aucun nom
-                                        figurant sur notre liste de mercenaires.
-                                        Si le recrutement s'est effectué par
-                                        Google et que le nom diffère de celui
-                                        utilisé sur Facebook, veuillez{" "}
-                                        <a
-                                            target="_blank"
-                                            href="https://m.me/alexisanzieu"
-                                        >
-                                            contacter l'administrateur système
-                                            planétaire.
-                                        </a>
-                                    </Text>
-                                </Blockquote>
-                            </>
-                        )}
-
-                        {userPermissionType === "MEMBER_NO_PAID" && (
-                            <CheckoutComponent
-                                session={session}
-                            ></CheckoutComponent>
-                        )}
-
-                        {userPermissionType === "MEMBER_PAID" && (
-                            <Outlet context={{ session, directusUsers }} />
-                        )}
+                        <Outlet context={{ session, directusUsers }} />
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />

@@ -56,12 +56,6 @@ const artists = [
         type: "techno",
         day: "saturday",
     },
-    {
-        name: "Wisley b2b Phazme",
-        schedule: "03:30",
-        type: "techno nrv",
-        day: "saturday",
-    },
 ];
 
 const headers = [
@@ -76,8 +70,8 @@ const dataset = (day: string) =>
             id: index,
             columns: [
                 { id: "p", data: artist.schedule },
-                { id: "q", data: artist.name || "en cours d'analyse..." },
-                { id: "z", data: artist.type || "en cours d'analyse..." },
+                { id: "q", data: "en cours d'analyse..." },
+                { id: "z", data: "en cours d'analyse..." },
             ],
         }));
 export default function Frequences() {

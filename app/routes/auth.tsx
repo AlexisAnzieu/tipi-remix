@@ -10,36 +10,56 @@ import { Form } from "remix";
 export default function Auth({ users }: any) {
     return (
         <>
-            <center>
-                <FrameHexagon
+            <div style={{ textAlign: "center", paddingBottom: "2em" }}>
+                <h5>Plus de 50 pass restants </h5>
+                <LoadingBars
+                    animator={{ activate: true }}
+                    determinate
+                    progress={0}
+                />
+            </div>
+            <FrameHexagon
+                animator={{
+                    duration: {
+                        enter: 1000,
+                    },
+                    activate: true,
+                }}
+                hover
+            >
+                <Text
                     animator={{
                         duration: {
                             enter: 1000,
+                            exit: 1000,
                         },
                         activate: true,
                     }}
-                    hover
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                    }}
                 >
-                    <Text
-                        animator={{
-                            duration: {
-                                enter: 1000,
-                                exit: 1000,
-                            },
-                            activate: true,
-                        }}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                        }}
-                    >
-                        L'inscription à la liste des mercenaires est maintenant
-                        clôturée.
-                    </Text>
-                </FrameHexagon>
-            </center>
-            <br />
-            <br />
+                    Vous devez être un membre de la communauté galactique pour
+                    pouvoir devenir citoyen. Si vous n'avez pas accès à
+                    <a href="https://www.facebook.com/events/688738495481100">
+                        {" "}
+                        cet événement{" "}
+                    </a>
+                    cela signifie que vous n'en faites malheureusement pas
+                    partie.
+                </Text>
+            </FrameHexagon>
+
+            <div
+                style={{
+                    textAlign: "center",
+                    fontSize: "1.4em",
+                    marginTop: "50px",
+                }}
+            >
+                Devenir citoyen{" "}
+            </div>
             <div
                 style={{
                     fontSize: 30,
