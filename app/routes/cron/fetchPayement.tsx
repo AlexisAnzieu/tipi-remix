@@ -1,5 +1,5 @@
-import { LoaderFunction } from "remix";
+import { json } from "@remix-run/node"; // or cloudflare/deno
 
-export let loader: LoaderFunction = ({ request, params }: any) => {
-    console.log("hello");
+export const loader = async () => {
+    return json({ ok: true });
 };

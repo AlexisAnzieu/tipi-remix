@@ -1,5 +1,5 @@
 import { Text, FrameHexagon, Button, FrameUnderline } from "@arwes/core";
-import { Link, useOutletContext } from "remix";
+import { Link } from "@remix-run/react";
 
 export default function Index() {
     return (
