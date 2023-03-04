@@ -12,6 +12,11 @@ export default function Index() {
                             Fréquences sonores
                         </Button>
                     </Link>
+                    <Link to="/comites">
+                        <Button FrameComponent={FrameUnderline}>
+                            Les 7 Comités
+                        </Button>
+                    </Link>
                     <br />
                     <br />
                 </div>
@@ -44,8 +49,8 @@ export default function Index() {
                 >
                     Un an s'est écoulé depuis que la comète Normand1LX32 s’est
                     écrasée en Lanaudière, l'équipe de scientifiques s'est
-                    maintenant organisé en différentes équipes afin d'organiser
-                    ce nouveau village.
+                    maintenant subdivisée en sept comités afin d'organiser ce
+                    nouveau campement.
                 </Text>
             </FrameHexagon>
             <br />
