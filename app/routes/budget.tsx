@@ -1,5 +1,5 @@
 import { Button } from "@arwes/core";
-import { Link, useOutletContext } from "remix";
+import { Link, useOutletContext } from "@remix-run/react";
 
 export default function Budget() {
     const { directusUsers } = useOutletContext<any>();

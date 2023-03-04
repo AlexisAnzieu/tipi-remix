@@ -5,7 +5,7 @@ import {
     LoadingBars,
     FrameCorners,
 } from "@arwes/core";
-import { Form } from "remix";
+import { Form } from "@remix-run/react";
 
 export default function Auth({ users }: any) {
     return (
