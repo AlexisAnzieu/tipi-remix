@@ -7,7 +7,7 @@
     },
     "crons": [
         {
-            "path": "/app/routes/cron/fetchPayement",
+            "path": "/api/cron/fetchPayment",
             "schedule": "42 12 * * *"
         }
     ]
