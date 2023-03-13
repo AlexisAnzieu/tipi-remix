@@ -378,7 +378,7 @@ export default function Comites() {
             </Text>
             <br />
             <br />
-            <h4>Comité alimentaire</h4>
+            <h4>Comité alimentaire du samedi soir</h4>
             <hr />
             <Text
                 animator={{
