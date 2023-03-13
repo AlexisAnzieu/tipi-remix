@@ -20,6 +20,14 @@ export default function Index() {
                     <br />
                     <br />
                 </div>
+                <div style={{ width: "50%", textAlign: "left" }}>
+                    <Link to="/billeterie">
+                        <Button FrameComponent={FrameUnderline}>
+                            Billeterie cosmique
+                        </Button>
+                    </Link>
+                    <br />
+                </div>
             </div>
             <br />
             <br />
