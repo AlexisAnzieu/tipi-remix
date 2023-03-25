@@ -144,7 +144,7 @@ export default function Index() {
                     subdivisés en 10 équipes vont se confronter afin de
                     découvrir les secrets de la montagne. La liste des
                     équipements à prendre est la suivante:
-                    <lu>
+                    <ul>
                         <li>lampe frontale</li>
                         <li>nourriture</li>
                         <li>breuvage</li>
@@ -152,7 +152,7 @@ export default function Index() {
                         <li>parures</li>
                         <li>tente</li>
                         <li>eau</li>
-                    </lu>
+                    </ul>
                 </Text>
             </FrameHexagon>
             <br />
