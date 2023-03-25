@@ -1,5 +1,5 @@
-import { Button, FrameBox, FrameLines, Text } from "@arwes/core";
-import { Link } from "@remix-run/react";
+import { Button, FrameBox, FrameLines } from "@arwes/core";
+import { Link, useNavigate } from "@remix-run/react";
 
 export default function Billetterie() {
     return (
@@ -41,14 +41,13 @@ export default function Billetterie() {
                     </Button>
                 </div>
                 <br />
-                ou{" "}
+                Recharger la page si le module ne s'affiche pas ou{" "}
                 <Link
                     target="_blank"
                     to="https://www.zeffy.com/fr-CA/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9"
                 >
-                    cliquez ici{" "}
+                    cliquez ici.
                 </Link>
-                si le module ne s'affiche pas
             </center>
 
             <br />
