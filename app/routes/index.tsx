@@ -45,7 +45,7 @@ export default function Index() {
             <br />
             <br />
             <h3>REVE.S DE TIPI</h3>
-            <h5>31 Janvier 2151 - 10:09:13</h5>
+            <h5>25 Mars 2151 - 10:09:13</h5>
             <FrameHexagon
                 animator={{
                     duration: {
