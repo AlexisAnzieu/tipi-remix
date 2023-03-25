@@ -232,14 +232,11 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Inspection : L'équipe doit inspecter régulièrement les
-                        différentes zones du festival pour vérifier que les
-                        participants respectent les règles environnementales et
-                        ne laissent pas de déchets sur le site. Ils doivent
-                        surveiller les zones de stationnement, les aires de
-                        restauration, les toilettes, les espaces de
-                        divertissement et tout autre lieu où les participants
-                        pourraient laisser des déchets.
+                        Nettoyage : Si l'équipe constate que des déchets ont été
+                        laissés sur le site, elle doit prendre des mesures
+                        immédiates pour nettoyer les zones concernées. Ils
+                        doivent veiller à ce que les déchets soient triés
+                        correctement et éliminés de manière responsable.
                     </li>
                     <br />
                     <li>
