@@ -20,7 +20,7 @@ export default function Billeterie() {
                     cet événement sur Facebook.
                 </Link>{" "}
                 Dans le cas contraire, nous serons contraints d'annuler votre
-                billet.
+                paiement.
             </FrameBox>
             <br />
             <br />
