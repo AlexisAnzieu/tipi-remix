@@ -6,15 +6,10 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
-    useLoaderData,
 } from "@remix-run/react";
 import styles from "~/style.css";
 import { ArwesThemeProvider, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
-import { setUserPermissionType } from "./utils/auth";
-import { authenticator } from "./utils/auth.server";
-
-import { directus } from "./utils/directus";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -43,29 +38,7 @@ export function links() {
         },
     ];
 }
-
-export const loader = async ({ request }: any) => {
-    const { data: directusUsers } = await directus
-        .items("tipi_users")
-        .readByQuery({
-            limit: 200,
-        });
-    const session = await authenticator.isAuthenticated(request);
-    console.log(session);
-    return {
-        session,
-        directusUsers,
-        ENV: {
-            WEBSITE_URL: process.env.WEBSITE_URL,
-            STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
-        },
-    };
-};
-
 export default function App() {
-    const { session, ENV, directusUsers } = useLoaderData();
-    let userPermissionType = setUserPermissionType(session);
-
     return (
         <html lang="en">
             <head>
@@ -89,15 +62,11 @@ export default function App() {
                         }}
                     />
                     <AnimatorGeneralProvider animator={animatorGeneral}>
-                        <Outlet context={{ session, directusUsers }} />
+                        <Outlet />
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `window.ENV = ${JSON.stringify(ENV)}`,
-                    }}
-                />
+                <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js" />
                 <Scripts />
                 {process.env.NODE_ENV === "development" && <LiveReload />}
             </body>

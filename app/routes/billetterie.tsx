@@ -1,4 +1,4 @@
-import { Button, FrameBox } from "@arwes/core";
+import { Button, FrameBox, FrameLines, Text } from "@arwes/core";
 import { Link } from "@remix-run/react";
 
 export default function Billetterie() {
@@ -33,30 +33,16 @@ export default function Billetterie() {
             </FrameBox>
             <br />
             <br />
-            <div
-                style={{
-                    position: "relative",
-                    overflow: "hidden",
-                    width: "100%",
-                    height: "70vh",
-                }}
-            >
-                <iframe
-                    title="Donation form powered by Zeffy"
-                    style={{
-                        position: "absolute",
-                        border: 0,
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        width: "100%",
-                        height: "100%",
-                    }}
-                    src="https://www.zeffy.com/fr-CA/embed/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9"
-                    allowTransparency={true}
-                ></iframe>
-            </div>
+            <br />
+            <center>
+                <div zeffy-form-link="https://www.zeffy.com/fr-CA/embed/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9?modal=true">
+                    <Button FrameComponent={FrameLines}>
+                        Ouvrir le module de paiement
+                    </Button>
+                </div>
+            </center>
+
+            <br />
         </>
     );
 }
