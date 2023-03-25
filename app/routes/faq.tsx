@@ -64,7 +64,7 @@ export default function Faq() {
             <hr />
             <Text>
                 Quelques semaines avant le début de l'événement et s'il reste
-                des places, nous ouvrirons la billeterie au grand public. Si tu
+                des places, nous ouvrirons la billetterie au grand public. Si tu
                 souhaites inviter des amis, tu pourras ainsi leur envoyer le
                 lien vers le site web.
             </Text>

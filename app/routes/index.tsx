@@ -28,9 +28,9 @@ export default function Index() {
                     <br />
                 </div>
                 <div style={{ width: "50%", textAlign: "right" }}>
-                    <Link to="/billeterie">
+                    <Link to="/billetterie">
                         <Button FrameComponent={FrameUnderline}>
-                            Billeterie cosmique
+                            Billetterie cosmique
                         </Button>
                     </Link>
                     <br />

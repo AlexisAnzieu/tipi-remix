@@ -1,7 +1,7 @@
 import { Button, FrameBox } from "@arwes/core";
 import { Link } from "@remix-run/react";
 
-export default function Billeterie() {
+export default function Billetterie() {
     return (
         <>
             <Link to="/">
@@ -9,7 +9,7 @@ export default function Billeterie() {
             </Link>
             <br />
             <br />
-            <h3>Billeterie cosmique</h3>
+            <h3>Billetterie cosmique</h3>
             <FrameBox
                 palette="error"
                 animator={{ activate: true }}
