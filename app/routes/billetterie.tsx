@@ -52,6 +52,7 @@ export default function Billetterie() {
             </center>
 
             <br />
+            <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js" />
         </>
     );
 }

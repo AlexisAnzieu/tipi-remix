@@ -66,7 +66,6 @@ export default function App() {
                     </AnimatorGeneralProvider>
                 </ArwesThemeProvider>
                 <ScrollRestoration />
-                <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js" />
                 <Scripts />
                 {process.env.NODE_ENV === "development" && <LiveReload />}
             </body>
