@@ -14,7 +14,7 @@ export default function Comites() {
             <br />
             <h1>Les 7 comités</h1>
             <FrameBox animator={{ activate: true }} linesWidths={[2, 0, 4, 0]}>
-                Afin d'assurer la survie du campement, les scientifiques se sont
+                Afin d'organiser le campement, les scientifiques se sont
                 subdivisés en 7 comités. Chaque comité est responsable d'une
                 partie de la vie de la communauté et un budget lui sera alloué.
             </FrameBox>
