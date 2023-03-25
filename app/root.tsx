@@ -1,18 +1,19 @@
 import { type MetaFunction } from "@remix-run/node";
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "@remix-run/react";
-import styles from "~/style.css";
 import {
-    ArwesThemeProvider,
-    Blockquote,
-    StylesBaseline,
-    Text,
-} from "@arwes/core";
+    Links,
+    LiveReload,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useLoaderData,
+} from "@remix-run/react";
+import styles from "~/style.css";
+import { ArwesThemeProvider, StylesBaseline } from "@arwes/core";
 import { AnimatorGeneralProvider } from "@arwes/animation";
 import { setUserPermissionType } from "./utils/auth";
-import Auth from "./routes/auth";
 import { authenticator } from "./utils/auth.server";
 
-import { CheckoutComponent } from "./component/CheckoutComponent";
 import { directus } from "./utils/directus";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
@@ -26,7 +27,7 @@ export const meta: MetaFunction = () => {
     return {
         title: "Portail intergalactique",
         description: "Interface de recherche intergalactique TiPi",
-        "og:image": "./images/wallpaper.jpeg",
+        "og:image": "./images/tipi.jpg",
     };
 };
 
