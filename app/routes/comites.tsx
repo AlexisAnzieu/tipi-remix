@@ -99,15 +99,18 @@ export default function Comites() {
                         Acheter les fournitures : L'équipe devra acheter toutes
                         les fournitures nécessaires pour la décoration, comme
                         des ballons, des guirlandes, des affiches, des bannières
-                        et autres décorations de fête foraine.
+                        et autres décorations de fête foraine. Pour les achats,
+                        un budget sera alloué et l’argent sera versé via interac
+                        en amont.
                     </li>
                     <br />
                     <li>
-                        Installer les décorations : L'équipe devra installer les
-                        décorations sur le site du festival en utilisant des
-                        normes de sécurité appropriées. Ils devront également
-                        s'assurer que les décorations sont bien placées et
-                        faciles d'accès pour les participants.
+                        Installer les décorations : L'équipe pourra participer à
+                        l’installation des décorations sur le site du festival
+                        en utilisant des normes de sécurité appropriées. Une
+                        fois sur place, ils devront également s'assurer que les
+                        décorations sont bien placées et faciles d'accès pour
+                        les participants.
                     </li>
                     <br />
                     <li>
@@ -121,9 +124,9 @@ export default function Comites() {
                     <br />
                     <li>
                         Nettoyer : Après la fin du festival, l'équipe devra
-                        démonter les décorations et ranger les fournitures. Ils
-                        devront également s'assurer que le site est laissé
-                        propre et en bon état.
+                        aider à démonter les décorations et ranger les
+                        fournitures. Ils devront également s'assurer que le site
+                        est laissé propre et en bon état.
                     </li>
                     <br />
                 </ul>
@@ -157,8 +160,9 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Installation : L'équipe doit installer et configurer
-                        tous les équipements techniques nécessaires pour le bon
+                        Installation : L'équipe pourra participer à
+                        l’installation et à la configuration de tous les
+                        équipements techniques nécessaires pour le bon
                         déroulement de l'événement. Cela inclut la pose de
                         câbles et de tuyaux, l'assemblage de structures, la mise
                         en place des écrans, des haut-parleurs et des lumières,
@@ -182,10 +186,11 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Démontage : L'équipe doit démonter tous les équipements
-                        techniques, y compris les câbles, les structures, les
-                        écrans, les haut-parleurs, etc., en veillant à ce qu'ils
-                        soient stockés correctement pour une utilisation future.
+                        Démontage : L'équipe doit aider au démontage de tous les
+                        équipements techniques, y compris les câbles, les
+                        structures, les écrans, les haut-parleurs, etc., en
+                        veillant à ce qu'ils soient stockés correctement pour
+                        une utilisation future.
                     </li>
                     <br />
                     <li>
@@ -227,11 +232,14 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Nettoyage : Si l'équipe constate que des déchets ont été
-                        laissés sur le site, elle doit prendre des mesures
-                        immédiates pour nettoyer les zones concernées. Ils
-                        doivent veiller à ce que les déchets soient triés
-                        correctement et éliminés de manière responsable.
+                        Inspection : L'équipe doit inspecter régulièrement les
+                        différentes zones du festival pour vérifier que les
+                        participants respectent les règles environnementales et
+                        ne laissent pas de déchets sur le site. Ils doivent
+                        surveiller les zones de stationnement, les aires de
+                        restauration, les toilettes, les espaces de
+                        divertissement et tout autre lieu où les participants
+                        pourraient laisser des déchets.
                     </li>
                     <br />
                     <li>
@@ -282,25 +290,26 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Acheter les fournitures : L'équipe devra acheter tous
+                        Acheter les fournitures : L'équipe devra acheter toutes
                         les fournitures nécessaires pour les jeux, y compris les
                         prix à gagner. Ils devront également s'assurer que les
                         jeux et les fournitures sont en bon état de
-                        fonctionnement.
+                        fonctionnement. . Pour les achats, un budget sera alloué
+                        et l’argent sera versé via interac en amont.
                     </li>
                     <br />
                     <li>
-                        Installer les jeux : L'équipe devra installer les jeux
-                        sur le site du festival en utilisant des normes de
-                        sécurité appropriées. Ils devront également s'assurer
-                        que les jeux sont bien placés et faciles d'accès pour
-                        les participants.
+                        Installer les jeux :L'équipe pourra participer à
+                        l’installation des jeux sur le site du festival en
+                        utilisant des normes de sécurité appropriées. Ils
+                        devront également s'assurer que les jeux sont bien
+                        placés et faciles d'accès pour les participants.
                     </li>
                     <br />
                     <li>
                         Surveiller les jeux : L'équipe devra surveiller les jeux
-                        pour s'assurer qu'ils sont joués en toute sécurité et de
-                        manière équitable. Ils devront également aider les
+                        pour s'assurer qu'ils sont utilisés en toute sécurité et
+                        de manière équitable. Ils devront également aider les
                         participants à comprendre les règles des jeux et à
                         répondre à toutes les questions qu'ils pourraient avoir.
                     </li>
@@ -408,14 +417,16 @@ export default function Comites() {
                         plats. Ils devront s'assurer de la qualité et de la
                         fraîcheur des produits, ainsi que de leur quantité
                         suffisante pour satisfaire les besoins des participants.
+                        Pour les achats, un budget vous sera alloué et l’argent
+                        vous sera versé via interac en amont.
                     </li>
                     <br />
                     <li>
                         Préparer les plats : L'équipe devra préparer les plats
-                        avec soin et en respectant les normes d'hygiène
-                        alimentaire. Ils devront travailler rapidement et
-                        efficacement pour préparer les quantités nécessaires de
-                        nourriture pour les participants.
+                        avec soin et respecter les normes d'hygiène alimentaire.
+                        Ils devront travailler rapidement et efficacement pour
+                        préparer les quantités nécessaires de nourriture pour
+                        les participants.
                     </li>
                     <br />
                     <li>

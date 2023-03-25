@@ -7,11 +7,18 @@ export default function Index() {
             <h1>PORTAIL INTERGALACTIQUE</h1>
             <div style={{ display: "flex" }}>
                 <div style={{ width: "50%", textAlign: "left" }}>
+                    <Link to="/faq">
+                        <Button FrameComponent={FrameUnderline}>
+                            Centre d'information galactique{" "}
+                        </Button>
+                    </Link>
+                    <br />
                     <Link to="/frequences">
                         <Button FrameComponent={FrameUnderline}>
                             Fréquences sonores
                         </Button>
                     </Link>
+                    <br />
                     <Link to="/comites">
                         <Button FrameComponent={FrameUnderline}>
                             Les 7 Comités
@@ -20,10 +27,16 @@ export default function Index() {
                     <br />
                     <br />
                 </div>
-                <div style={{ width: "50%", textAlign: "left" }}>
+                <div style={{ width: "50%", textAlign: "right" }}>
                     <Link to="/billeterie">
                         <Button FrameComponent={FrameUnderline}>
                             Billeterie cosmique
+                        </Button>
+                    </Link>
+                    <br />
+                    <Link to="/ateliers">
+                        <Button FrameComponent={FrameUnderline}>
+                            Ateliers
                         </Button>
                     </Link>
                     <br />
@@ -58,8 +71,15 @@ export default function Index() {
                     Un an s'est écoulé depuis que la comète Normand1LX32 s’est
                     écrasée en Lanaudière, l'équipe de scientifiques s'est
                     maintenant subdivisée en sept comités afin d'organiser ce
-                    nouveau campement.
+                    nouveau campement, sur le thème de la fête foraine.
                 </Text>
+                <img
+                    style={{
+                        paddingTop: "50px",
+                    }}
+                    src="./images/tipi.jpg"
+                    alt="A nebula"
+                />
             </FrameHexagon>
             <br />
             <br />
