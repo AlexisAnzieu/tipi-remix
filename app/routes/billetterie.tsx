@@ -40,6 +40,12 @@ export default function Billetterie() {
                         Ouvrir le module de paiement
                     </Button>
                 </div>
+                <br />
+                ou{" "}
+                <Link to="https://www.zeffy.com/fr-CA/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9">
+                    cliquez ici{" "}
+                </Link>
+                si le module ne s'affiche pas
             </center>
 
             <br />
