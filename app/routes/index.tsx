@@ -44,7 +44,7 @@ export default function Index() {
             </div>
             <br />
             <br />
-            <h3>REVE.S DE TIPI</h3>
+            <h3>TIPI FESTIVAL III</h3>
             <h5>25 Mars 2151 - 10:09:13</h5>
             <FrameHexagon
                 animator={{
