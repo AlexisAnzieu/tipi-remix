@@ -25,7 +25,7 @@ export default function Faq() {
             <h6>À quel endroit le campement est-il établi?</h6>
             <hr />
             <Text>
-                Le campement est situé à 1h30 de Montréal,{" "}
+                Le campement est situé à 1h10 de Montréal,{" "}
                 <Link to="https://www.facebook.com/Les-Tipis-du-Sommet-314400425247270">
                     aux Tipis du Sommet
                 </Link>
@@ -35,7 +35,7 @@ export default function Faq() {
                 dizaine de minutes pour rejoindre le campement. <br /> <br />
                 Une navette sera mise à disposition des festivaliers le vendredi
                 afin d'acheminer le matériel de camping, cette dernière passera
-                à 3 reprises: <b>17h, 19h et 21h.</b>
+                à 3 reprises. Les horaires seront communiqués ultérieurement.
             </Text>
             <br />
             <br />
