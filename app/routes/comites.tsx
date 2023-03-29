@@ -160,16 +160,6 @@ export default function Comites() {
                     </li>
                     <br />
                     <li>
-                        Installation : L'équipe pourra participer à
-                        l’installation et à la configuration de tous les
-                        équipements techniques nécessaires pour le bon
-                        déroulement de l'événement. Cela inclut la pose de
-                        câbles et de tuyaux, l'assemblage de structures, la mise
-                        en place des écrans, des haut-parleurs et des lumières,
-                        etc.
-                    </li>
-                    <br />
-                    <li>
                         Tests : L'équipe doit effectuer des tests sur tous les
                         équipements installés pour s'assurer qu'ils fonctionnent
                         correctement avant l'ouverture de l'événement. Ils
