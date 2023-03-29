@@ -46,7 +46,7 @@ export default function Billetterie() {
                     target="_blank"
                     to="https://www.zeffy.com/fr-CA/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9"
                 >
-                    cliquez ici.
+                    cliquer ici.
                 </Link>
             </center>
 
