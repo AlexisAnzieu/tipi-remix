@@ -35,23 +35,15 @@ export default function Billetterie() {
             <br />
             <br />
             <center>
-                <div zeffy-form-link="https://www.zeffy.com/fr-CA/embed/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9?modal=true">
+                <a
+                    target="_blank"
+                    href="https://www.zeffy.com/fr-CA/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9"
+                >
                     <Button FrameComponent={FrameLines}>
                         Ouvrir le module de paiement
                     </Button>
-                </div>
-                <br />
-                Recharger la page si le module ne s'affiche pas ou{" "}
-                <Link
-                    target="_blank"
-                    to="https://www.zeffy.com/fr-CA/ticketing/9fe5b58e-51d9-4a9d-b73e-bbc26fd208c9"
-                >
-                    cliquer ici.
-                </Link>
+                </a>
             </center>
-
-            <br />
-            <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js" />
         </>
     );
 }
