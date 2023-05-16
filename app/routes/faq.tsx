@@ -35,7 +35,7 @@ export default function Faq() {
                 dizaine de minutes pour rejoindre le campement. <br /> <br />
                 Une navette sera mise à disposition des festivaliers le vendredi
                 afin d'acheminer le matériel de camping, cette dernière passera
-                à 3 reprises. Les horaires seront communiqués ultérieurement.
+                à 3 reprises: 17h, 19h puis 20h30.
             </Text>
             <br />
             <br />
