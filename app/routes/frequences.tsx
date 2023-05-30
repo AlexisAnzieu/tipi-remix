@@ -1,59 +1,71 @@
 import { Link } from "@remix-run/react";
 import { Button, Table } from "@arwes/core";
 
+// 23.30  - blondie b2b Elena
+
+// 1.30 - Freezer
+
+// FIN 3H30
+
 const artists = [
     {
-        name: "Blondie",
-        schedule: "22:00",
-        type: "progressive house",
+        name: "libre accès",
+        schedule: "21:00",
+        type: "toutes",
         day: "friday",
     },
     {
-        name: "Moodjo",
-        schedule: "23:30",
-        type: "house",
-        day: "friday",
-    },
-    {
-        name: "Sound Crate",
-        schedule: "01:00",
-        type: "Minimal & Breaks",
-        day: "friday",
-    },
-    {
-        name: "Wisley",
-        schedule: "02:30",
-        type: "techno",
-        day: "friday",
-    },
-    {
-        name: "(FR)eezer",
-        schedule: "03:30",
-        type: "'to the sunrise' dj set",
+        name: "Long Dail",
+        schedule: "23:00",
+        type: "Break House",
         day: "friday",
     },
     {
         name: "Perle",
-        schedule: "22:00",
-        type: "House & Funk",
-        day: "saturday",
+        schedule: "00:00",
+        type: "Acid House",
+        day: "friday",
     },
     {
-        name: "Takümi",
-        schedule: "23:30",
-        type: "Tribal house",
-        day: "saturday",
+        name: "Jennifer System",
+        schedule: "01:30",
+        type: "Electronic",
+        day: "friday",
     },
     {
-        name: "Evita",
-        schedule: "01:00",
-        type: "Italo Trance",
-        day: "saturday",
-    },
-    {
-        name: "Phazme",
+        name: "Jave Marlou",
         schedule: "02:30",
-        type: "techno",
+        type: "Raw House",
+        day: "friday",
+    },
+    {
+        name: "L2",
+        schedule: "04:00",
+        type: "Techno",
+        day: "friday",
+    },
+    {
+        name: "libre accès",
+        schedule: "21:00",
+        type: "toutes",
+        day: "saturday",
+    },
+    {
+        name: "Dj Jounette ",
+        schedule: "22:30",
+        type: "Tribal",
+        day: "saturday",
+    },
+    {
+        name: "Blondie b2b Elena",
+        schedule: "23:30",
+        type: "Techno",
+        day: "saturday",
+    },
+    {
+        name: "(fr)eezer",
+        schedule: "01:30",
+        type: "Closing éclectique",
         day: "saturday",
     },
 ];
@@ -70,8 +82,8 @@ const dataset = (day: string) =>
             id: index,
             columns: [
                 { id: "p", data: artist.schedule },
-                { id: "q", data: "en cours d'analyse..." },
-                { id: "z", data: "en cours d'analyse..." },
+                { id: "q", data: artist.name },
+                { id: "z", data: artist.type },
             ],
         }));
 export default function Frequences() {
@@ -82,14 +94,14 @@ export default function Frequences() {
             </Link>
             <br />
             <br />
-            <h3>Vendredi</h3>
+            <h3>Vendredi (21h-5h)</h3>
             <Table
                 animator={{ animate: false }}
                 headers={headers}
                 dataset={dataset("friday")}
                 columnWidths={["27%", "37%", "36%"]}
             />
-            <h3>Samedi</h3>
+            <h3>Samedi (21h-3h30)</h3>
             <Table
                 animator={{ animate: false }}
                 headers={headers}

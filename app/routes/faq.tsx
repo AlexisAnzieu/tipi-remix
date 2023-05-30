@@ -83,6 +83,34 @@ export default function Faq() {
             <br />
             <br />
             <br />
+            <h6>Mon billet est-il remboursable?</h6>
+            <hr />
+            <Text>
+                Notre trésorie étant limitée, nous n'avons malheureusement pas
+                la capacité de rembourser les participants qui ne souhaiteraient
+                plus venir pour cause de mauvais temps ou autres raisons
+                personnelles.
+            </Text>
+            <br />
+            <br />
+            <br />
+            <h6>Mon billet est-il transférable?</h6>
+            <hr />
+            <Text>
+                Vous pouvez transférer votre billet à une autre personne si vous
+                ne pouvez plus venir. Pour cela, il vous suffit de nous
+                contacter sur Facebook en amont.
+            </Text>
+            <br />
+            <br />
+            <br />
+            <h6>Le festival sera t-il maintenu en cas d'intempéries?</h6>
+            <hr />
+            <Text>
+                Oui, le festival aura lieu qu'il pleuve ou qu'il vente. Nous
+                avons prévu de quoi vous abriter en cas de pluie. Prenez
+                cependant des serviettes et des vêtements chauds au cas où.
+            </Text>
         </>
     );
 }
