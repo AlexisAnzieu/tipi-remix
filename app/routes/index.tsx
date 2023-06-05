@@ -40,6 +40,12 @@ export default function Index() {
                         </Button>
                     </Link>
                     <br />
+                    <Link to="/plan">
+                        <Button FrameComponent={FrameUnderline}>
+                            Plan du lieu
+                        </Button>
+                    </Link>
+                    <br />
                 </div>
             </div>
             <br />
