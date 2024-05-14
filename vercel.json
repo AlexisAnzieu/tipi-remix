@@ -1,14 +1,19 @@
 {
-    "build": {
-        "env": {
-            "ENABLE_FILE_SYSTEM_API": "1",
-            "WEBSITE_URL": "https://tipi-festival.com/"
-        }
-    },
-    "crons": [
-        {
-            "path": "/cron/fetchPayment",
-            "schedule": "42 12 * * *"
-        }
-    ]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.js"
+      }
+    ],
+    "env": {
+      "ENABLE_FILE_SYSTEM_API": "1",
+      "WEBSITE_URL": "https://tipi-festival.com/"
+    }
+  }
