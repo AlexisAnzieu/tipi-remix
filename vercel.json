@@ -1,6 +1,15 @@
 {
   "version": 2,
-  "env": {
-    "WEBSITE_URL": "https://tipi-festival.com/"
-  }
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
 }
