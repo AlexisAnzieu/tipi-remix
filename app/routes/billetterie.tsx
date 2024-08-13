@@ -10,17 +10,6 @@ export default function Billetterie() {
       <br />
       <br />
       <h3>Billetterie antique</h3>
-      <FrameBox
-        palette="error"
-        animator={{ activate: true }}
-        linesWidths={[2, 0, 4, 0]}
-      >
-        Attention! N'achetez votre billet que si vous êtes invités à{" "}
-        <Link to="https://www.facebook.com/events/2185834221764370">
-          cet événement sur Facebook.
-        </Link>{" "}
-        Dans le cas contraire, nous serons contraints d'annuler votre paiement.
-      </FrameBox>
       <br />
       <br />
       <FrameBox animator={{ activate: true }} linesWidths={[2, 0, 4, 0]}>
