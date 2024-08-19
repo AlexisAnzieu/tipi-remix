@@ -45,7 +45,7 @@ const artists = [
     day: "saturday",
   },
   {
-    name: "Pierre",
+    name: "P La Lune",
     schedule: "23:30",
     type: "Progressive House",
     day: "saturday",
