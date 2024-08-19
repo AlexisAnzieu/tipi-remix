@@ -47,7 +47,7 @@ const artists = [
   {
     name: "P La Lune",
     schedule: "23:30",
-    type: "Progressive House",
+    type: "Techno / Dark Disco",
     day: "saturday",
   },
   {
