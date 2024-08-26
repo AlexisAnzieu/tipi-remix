@@ -32,9 +32,9 @@ export default function Index() {
             <Button FrameComponent={FrameUnderline}>Activités</Button>
           </Link>
           <br />
-          {/* <Link to="/plan">
+          <Link to="/plan">
             <Button FrameComponent={FrameUnderline}>Plan du lieu</Button>
-          </Link> */}
+          </Link>
           <br />
         </div>
       </div>
