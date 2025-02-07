@@ -50,7 +50,7 @@ export default function Index() {
           letterSpacing: "4px",
         }}
       >
-        20-22 JUIN
+        20-22 JUIN 2025
       </Text>
       <FrameHexagon
         animator={{
