@@ -14,10 +14,10 @@ export default function Faq() {
       <h6>Combien coûte l'entrée?</h6>
       <hr />
       <Text>
-        L'entrée est en tarif progressif de 90$ pour les premiers acheteurs à
-        120$. Il comprend l'entrée au festival, le camping sur place durant les
-        deux jours et les diners du samedi et du dimanche soir. Il n'y a pas de
-        demi-tarif pour une journée seule.
+        L'entrée est en tarif progressif de 100$ pour les premiers acheteurs à
+        130$. Il comprend l'entrée au festival, le camping sur place durant les
+        deux jours et le diner du samedi soir. Il n'y a pas de demi-tarif pour
+        une journée seule.
       </Text>
       <br />
       <br />
@@ -46,15 +46,6 @@ export default function Faq() {
         Oui, un planning sera mis en place quelques jours avant le début de
         l'événement afin de permettre aux festivaliers de réserver une place en
         tipi pour les deux nuits. Cela n'a pas d'impact sur le prix du billet.
-      </Text>
-      <br />
-      <br />
-      <br />
-      <h6>Peux t-on participer à plusieurs comités en même temps?</h6>
-      <hr />
-      <Text>
-        Oui, si tu as le temps et l'énergie! Il n'y a pas de limite au nombre de
-        comités dans lesquels tu peux participer.
       </Text>
       <br />
       <br />
