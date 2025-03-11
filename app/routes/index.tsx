@@ -84,7 +84,7 @@ export default function Index() {
           style={{
             paddingTop: "50px",
           }}
-          src="./images/animals.jpg"
+          src="./images/animals.png"
           alt="Animal kingdom"
         />
       </FrameHexagon>
