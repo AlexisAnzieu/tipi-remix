@@ -22,7 +22,7 @@ export const meta: MetaFunction = () => {
   return {
     title: "Portail intergalactique",
     description: "Interface de recherche intergalactique TiPi",
-    "og:image": "https://tipi-festival.com/images/five.png",
+    "og:image": "https://tipi-festival.com/images/animals.png",
   };
 };
 
