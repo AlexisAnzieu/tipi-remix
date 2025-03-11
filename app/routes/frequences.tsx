@@ -75,9 +75,9 @@ const dataset = (day: string) =>
     .map((artist, index) => ({
       id: index,
       columns: [
-        { id: "p", data: artist.schedule },
-        { id: "q", data: artist.name },
-        { id: "z", data: artist.type },
+        { id: "p", data: "en cours d'analyse..." },
+        { id: "q", data: "en cours d'analyse..." },
+        { id: "z", data: "en cours d'analyse..." },
       ],
     }));
 export default function Frequences() {
@@ -88,14 +88,14 @@ export default function Frequences() {
       </Link>
       <br />
       <br />
-      <h3>Samedi (22h-5h)</h3>
+      <h3>Vendredi</h3>
       <Table
         animator={{ animate: false }}
         headers={headers}
         dataset={dataset("friday")}
         columnWidths={["27%", "37%", "36%"]}
       />
-      <h3>Dimanche (22h-4h)</h3>
+      <h3>Samedi</h3>
       <Table
         animator={{ animate: false }}
         headers={headers}
