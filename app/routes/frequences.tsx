@@ -43,7 +43,7 @@ const artists = [
   {
     name: "Shell",
     schedule: "22:00 - 23:30",
-    type: "",
+    type: "Minimal / Progressive",
     day: "saturday",
   },
   {
