@@ -8,57 +8,53 @@ import { Button, Table } from "@arwes/core";
 // FIN 3H30
 
 const artists = [
-  {
-    name: "Sunset Mix",
-    schedule: "18:30 - 20h",
-    type: "Deep House",
-    day: "friday",
-  },
+  // Vendredi
   {
     name: "Jave Marlou",
-    schedule: "22:00",
-    type: "Disco / House",
+    schedule: "22:00 - 23:30",
+    type: "House / Disco",
     day: "friday",
   },
   {
-    name: "L2",
-    schedule: "00:00",
-    type: "House / Techno",
+    name: "Nauemany",
+    schedule: "23:30 - 01:00",
+    type: "House",
+    day: "friday",
+  },
+  {
+    name: "Kroma",
+    schedule: "01:00 - 02:30",
+    type: "Techno",
     day: "friday",
   },
   {
     name: "(FR)eezer",
-    schedule: "02:30 - 5h",
-    type: "Exposé électronique",
+    schedule: "02:30 - 04:00",
+    type: "Electro",
     day: "friday",
   },
+  // Samedi
   {
-    name: "Sunset Mix",
-    schedule: "18:30 - 20h",
-    type: "Deep house",
+    name: "Dj sunset",
+    schedule: "18:00 - 20:30",
+    type: "sunset vibes",
     day: "saturday",
   },
   {
-    name: "Nauemany ",
-    schedule: "22:00",
-    type: "Tech House",
+    name: "Shell",
+    schedule: "22:00 - 23:30",
+    type: "",
     day: "saturday",
   },
   {
-    name: "P La Lune",
-    schedule: "23:30",
-    type: "Techno / Dark Disco",
+    name: "Blondie",
+    schedule: "23:30 - 01:00",
+    type: "Progressive",
     day: "saturday",
   },
   {
-    name: "Jave Marlou b2b (FR)eezer",
-    schedule: "01:00",
-    type: "Dark disco",
-    day: "saturday",
-  },
-  {
-    name: "Kroma",
-    schedule: "02:30 - 4h",
+    name: "Phazme",
+    schedule: "01:00 - 02:30",
     type: "Techno",
     day: "saturday",
   },
@@ -75,9 +71,9 @@ const dataset = (day: string) =>
     .map((artist, index) => ({
       id: index,
       columns: [
-        { id: "p", data: "en cours d'analyse..." },
-        { id: "q", data: "en cours d'analyse..." },
-        { id: "z", data: "en cours d'analyse..." },
+        { id: "p", data: artist.schedule },
+        { id: "q", data: artist.name },
+        { id: "z", data: artist.type },
       ],
     }));
 export default function Frequences() {
