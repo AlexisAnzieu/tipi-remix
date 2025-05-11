@@ -18,7 +18,7 @@ const artists = [
   {
     name: "Nauemany",
     schedule: "23:30 - 01:00",
-    type: "House",
+    type: "Minimal House",
     day: "friday",
   },
   {
