@@ -41,7 +41,7 @@ const artists = [
     day: "saturday",
   }, 
   {
-    name: "Dan",
+    name: "Danilamalice",
     schedule: "21:00 - 22:30",
     type: "Micro house / Minimal",
     day: "saturday",
