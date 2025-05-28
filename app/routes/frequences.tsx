@@ -42,25 +42,19 @@ const artists = [
   }, 
   {
     name: "Danilamalice",
-    schedule: "21:00 - 22:30",
+    schedule: "22:00 - 23:30",
     type: "Micro house / Minimal",
     day: "saturday",
   },
   {
-    name: "Shell",
-    schedule: "22:30 - 00:00",
-    type: "Minimal / Progressive",
-    day: "saturday",
-  },
-  {
     name: "Blondie",
-    schedule: "00:00 - 01:30",
+    schedule: "23:30 - 01:00",
     type: "Progressive",
     day: "saturday",
   },
   {
     name: "Luce",
-    schedule: "01:30 - 03:00",
+    schedule: "01:00 - 02:30",
     type: "Techno",
     day: "saturday",
   },
