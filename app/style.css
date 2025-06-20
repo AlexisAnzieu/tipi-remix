@@ -8,6 +8,26 @@ body {
     padding-top: 0px !important;
 }
 
+.killer-banner {
+    background: #04f7f8;
+    text-align: center;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+}
+
+.killer-banner a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+}
+
+.killer-banner a:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
 .stripe_button {
     background: #04f7f8;
     font-family: Arial, sans-serif;
