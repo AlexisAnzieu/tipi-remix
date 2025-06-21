@@ -61,7 +61,7 @@ export default function App() {
           <AnimatorGeneralProvider animator={animatorGeneral}>
             <div className="killer-banner">
               <a
-                href="https://killer.h2t.club/games/cmc4y4koi0000l704sfpbilbj/login"
+                href="https://killer.h2t.club/games/cmc6jl8j80005nxtep3tp6uwp/login"
                 target="_blank"
                 rel="noopener noreferrer"
               >
