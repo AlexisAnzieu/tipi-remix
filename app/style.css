@@ -135,24 +135,3 @@ body {
     background-color: black;
     box-shadow: 0 0 0;
 }
-
-/* Music Player Styles */
-.music-container {
-    padding: 2rem;
-    text-align: center;
-}
-
-.mega-embed {
-    background: black;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.mega-embed iframe {
-    border-radius: 4px;
-    display: block;
-}

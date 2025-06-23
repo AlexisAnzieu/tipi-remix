@@ -60,7 +60,9 @@ export default function App() {
           />
           <AnimatorGeneralProvider animator={animatorGeneral}>
             <div className="killer-banner">
-              <a href="/music">🎧 Écouter les DJ Sets 🎧</a>
+              <a href="https://mega.nz/file/oZ1HgBxI#JOP58mG6WGuIV92UoREtaySENNqBDmuRBRq3pWXiOI8">
+                🎧 Écouter les DJ Sets 🎧
+              </a>
             </div>
             <Outlet />
           </AnimatorGeneralProvider>
