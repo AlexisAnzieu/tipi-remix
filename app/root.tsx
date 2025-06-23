@@ -60,13 +60,7 @@ export default function App() {
           />
           <AnimatorGeneralProvider animator={animatorGeneral}>
             <div className="killer-banner">
-              <a
-                href="https://killer.h2t.club/games/cmc6jl8j80005nxtep3tp6uwp/login"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                🎮 Accéder au jeu Killer 🎮
-              </a>
+              <a href="/music">🎧 Écouter les DJ Sets 🎧</a>
             </div>
             <Outlet />
           </AnimatorGeneralProvider>

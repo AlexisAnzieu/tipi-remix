@@ -135,3 +135,21 @@ body {
     background-color: black;
     box-shadow: 0 0 0;
 }
+
+/* Music Player Styles */
+.music-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.audio-player {
+    background: black;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 500px;
+}
