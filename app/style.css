@@ -142,14 +142,17 @@ body {
     text-align: center;
 }
 
-.audio-player {
+.mega-embed {
     background: black;
     border-radius: 8px;
     padding: 1.5rem;
     margin-top: 2rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.audio-player audio {
-    width: 100%;
-    max-width: 500px;
+.mega-embed iframe {
+    border-radius: 4px;
+    display: block;
 }
